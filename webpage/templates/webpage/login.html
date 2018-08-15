@@ -1,0 +1,32 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block contenedor %}
+    <article>
+        <section class="section-name">
+            <p>login</p>
+        </section>
+        <section class="d-flex flex-column p-1">
+            <div class="d-flex flex-column row align-items-center">
+                <div class="col-md-6 text-center d-flex flex-row align-items-center justify-content-center">
+                    <img class="" src="http://placehold.it/200x200">
+                    <h2>Inicio de Sesión</h2>
+                </div>
+                <div class="d-flex col-md-6">
+                   <form class="w-100 p-4">
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" placeholder="name@example.com">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Contraseña</label>
+                        <input type="password" class="form-control" placeholder="debe de contener minimo 8 digitos" min="8">
+                      </div>
+                      <div class="form-group text-center">
+                        <button type="submit" class="btn btn-success">Ingresar</button>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </article>
+{% endblock %}

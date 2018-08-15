@@ -1,3 +1,4 @@
+/* ## Base Document's Structure ## */
 html {
   height: 100%;
 }
@@ -22,12 +23,12 @@ body {
 p {
   margin-bottom: 1em;
 }
-header, main, footer {
+header, footer {
   padding: 2em;
   color: white;
 }
 header {
-  background-color: #85144B;
+  background-color: whitesmoke;s
 }
 main {
   background-color: #3D9970;
@@ -35,3 +36,38 @@ main {
 footer {
   background-color: #001F3F;
 }
+article{
+  width: 100%;
+}
+
+/* Classes Being used on all the page */
+
+
+
+/* Index Classes */
+
+/* About us Classes */
+.centros-title{
+  text-align: center;
+}
+.centros-background{
+   background-color:#ECF2F3;
+}
+.about-us-map{
+  height: 400px;
+}
+.about-us-contact{
+  background-color:#ECF2F3;
+}
+.about-us-sendbtn{
+  width: 30%;
+  text-align: center;
+}
+
+/* Schedule appointment classes */
+.schedule-map{
+  height: 400px;
+  background-color:#ECF2F3;
+}
+
+/* Partners Classes */

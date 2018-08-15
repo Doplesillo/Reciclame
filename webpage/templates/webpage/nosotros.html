@@ -1,0 +1,60 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block contenedor %}
+<main>
+    <article>
+        <section class="section-name">
+            <p>Nosotros</p>
+        </section>
+        <section class="d-flex flex-column p-1">
+            <h2>Reciclame</h2>
+            <div class="d-flex flex-column flex-md-row">
+            <!-- TODO: Use 50% on each side in desktop view -->
+                <div class="p-4">
+                    <p>Es una plataforma que te permite ubicar centros de acopio cercanos y entregar tus residuos electronicos para su correcto reciclaje</p>
+                    <p>Ademas de ayudar a concervar el medio ambiente, recibiras puntos para canjearlos por descuentos con nuestros partners</p>
+                </div>
+                <div class="d-flex justify-content-center align-center">
+                <!-- TODO: Responsive video -->
+                    <iframe width="360" height="315" src="https://www.youtube.com/embed/5NfOnHx-lBE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <section class="d-flex flex-column flex-md-row centros-background">
+            <div class="centros-title">
+                <h3>Mas de <span>20</span> centros de acopio en tu zona metropolitana</h3>
+            </div>
+            <div class="mb-4 d-flex flex-column flex-md-row">
+                <div class="d-flex flex-row justify-content-center">
+                    <img class="m-3" src="http://placehold.it/150x150">
+                    <img class="m-3" src="http://placehold.it/150x150">
+                </div>
+                <div class="d-flex flex-row justify-content-center">
+                    <img class="m-3" src="http://placehold.it/150x150">
+                    <img class="m-3" src="http://placehold.it/150x150">
+                </div>
+            </div>
+        </section>
+        <section class="about-us-map d-flex flex-column">
+
+        </section>
+        <section class="about-us-contact d-flex flex-column">
+            <form class="m-3">
+                <div class="d-flex flex-column flex-md-row">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="contact-name" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="contact-textarea" rows="10" placeholder="Texto"></textarea>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a class="about-us-sendbtn" href="#"><button class="btn btn-success p-3">Enviar</button></a>
+                </div>
+            </form>
+        </section>
+    </article>
+{% endblock %}

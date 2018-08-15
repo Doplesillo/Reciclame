@@ -6,4 +6,19 @@ from django.http import HttpResponse
 def index(request):
     return render(request, 'webpage/index.html')
 
+def nosotros(request):
+    return render(request, 'webpage/nosotros.html')
+
+def agendar(request):
+    return render(request, 'webpage/agendar.html')
+
+def partners(request):
+    return render(request, 'webpage/partners.html')
+
+def registro(request):
+    return render(request, 'webpage/registro.html')
+
+def login(request):
+    return render(request, 'webpage/login.html')
+
 

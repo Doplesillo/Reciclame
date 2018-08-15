@@ -1,0 +1,50 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block contenedor %}
+    <article>
+        <section class="section-name">
+            <p>Agenda tu cita</p>
+        </section>
+        <section class="section-title">
+            <h3>Registro de tu cita</h3>
+            <h5>Centros de Acopio</h5>
+            <p>Elige el centro de acopio donde deseas llevar tus residuos</p>
+        </section>
+        <section class="schedule-map">
+
+        </section>
+        <section class="schedule-map-form">
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Centro de Acopio</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect2">Fecha y Hora</label>
+                <input type="date"  class="form-control">
+                <input type="time"  class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Residuos Electronicos</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control">
+              </div>
+            </form>
+        </section>
+
+    </article>
+{% endblock %}
