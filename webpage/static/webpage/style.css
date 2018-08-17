@@ -31,7 +31,7 @@ header {
   background-color: whitesmoke;s
 }
 main {
-  background-color: #3D9970;
+  background-color: white;
 }
 footer {
   background-color: #001F3F;
@@ -41,9 +41,10 @@ article{
 }
 
 /* Classes Being used on all the page */
-
-
-
+.section-name{
+  background: linear-gradient(to right, #528F1E , #6DBB29);
+  color: white;
+}
 /* Index Classes */
 
 /* About us Classes */
@@ -66,8 +67,30 @@ article{
 
 /* Schedule appointment classes */
 .schedule-map{
-  height: 400px;
   background-color:#ECF2F3;
 }
+#mapid {
+    height: 400px;
+}
+
+input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
+    content: "";
+  }
+input[type="time"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+input[type="time"]:focus:before,
+input[type="time"]:valid:before {
+    content: "";
+  }
+
 
 /* Partners Classes */
