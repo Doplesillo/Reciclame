@@ -6,15 +6,17 @@
             <h4>Nosotros</h4>
         </section>
         <section class="d-flex flex-column p-3 container">
-
             <div class="d-flex flex-column flex-md-row row">
                 <div class="p-4 col-md-6">
                     <h2>Reciclame</h2>
-                    <p>Es una plataforma que te permite ubicar centros de acopio cercanos y entregar tus residuos electronicos para su correcto reciclaje</p>
-                    <p>Ademas de ayudar a concervar el medio ambiente, recibiras puntos para canjearlos por descuentos con nuestros partners</p>
+                    <p>Es una plataforma que te permite ubicar centros de acopio cercanos y entregar tus residuos
+                        electronicos para su correcto reciclaje</p>
+                    <p>Ademas de ayudar a concervar el medio ambiente, recibiras puntos para canjearlos por descuentos
+                        con nuestros partners</p>
                 </div>
-                <div  class="d-flex justify-content-center align-center col-md-6 embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5NfOnHx-lBE" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <div class="d-flex justify-content-center align-center col-md-6 embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/0YjLf8T0lUs"
+                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
@@ -22,31 +24,39 @@
             <div class="d-flex flex-column centros-title col-sm-12 col-lg-4 justify-content-center align-items-center">
                 <h3>Mas de <span>20</span> centros de acopio en tu zona metropolitana</h3>
             </div>
-            <div class="mb-4 d-flex flex-column flex-md-row col-xs-12 col-sm-12 col-lg-8 justify-content-center align-items-center">
-                <div class="d-flex flex-row col-xs-12 col-sm-12 col-md-6 col-lg-4 m-1">
-                    <img class="m-1" src="http://placehold.it/120x120">
-                    <img class="m-1" src="http://placehold.it/120x120">
+            <!-- Circulos mobile -->
+            <div class="mb-4 mt-4 d-flex flex-column d-sm-none justify-content-center align-items-center">
+                <div class="d-flex flex-row">
+                    <img class="m-3" src="{% static "webpage/images/Circulo 1 - 100px.png" %}">
+                    <img class="m-3" src="{% static "webpage/images/Circulo 2 - 100px.png" %}">
                 </div>
-                <div class="d-flex flex-row col-xs-12 col-sm-12 col-md-6 col-lg-4 m-1">
-                    <img class="m-1" src="http://placehold.it/120x120">
-                    <img class="m-1" src="http://placehold.it/120x120">
+                <div class="d-flex flex-row">
+                    <img class="m-3" src="{% static "webpage/images/Circulo 1 - 100px.png" %}">
+                    <img class="m-3" src="{% static "webpage/images/Circulo 2 - 100px.png" %}">
                 </div>
+            </div>
+            <!-- Circulos tablets y desktop -->
+            <div class="mb-4 mt-4 d-none d-sm-flex flex-sm-row col-xs-12 col-sm-12 col-lg-8 justify-content-around">
+                <img src="{% static "webpage/images/Circulo 1 - 100px.png" %}">
+                <img src="{% static "webpage/images/Circulo 2 - 100px.png" %}">
+                <img src="{% static "webpage/images/Circulo 3 - 100px.png" %}">
+                <img src="{% static "webpage/images/Circulo 4 - 100px.png" %}">
             </div>
         </section>
         <section class="about-us-map d-flex flex-column">
-             <div id="mapid"></div>
+            <div id="mapid"></div>
             <!-- leaflet + mapbox -->
-        <script>
-            var mymap = L.map('mapid').setView([20.659698, -103.349609], 13);
-            L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoiam1hbnVlbC1jaGFpcmV6IiwiYSI6ImNqa3dwbmxrZjAwZHczcXA0Nndud3k2NncifQ.9Wg2JDWZnmr1J57aPT1_rQ', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                maxZoom: 18,
-                id: 'mapbox.streets',
-                accessToken: 'pk.eyJ1Ijoiam1hbnVlbC1jaGFpcmV6IiwiYSI6ImNqa3dwbmxrZjAwZHczcXA0Nndud3k2NncifQ.9Wg2JDWZnmr1J57aPT1_rQ'
-            }).addTo(mymap);
-            var marker = L.marker([20.659698, -103.349609]).addTo(mymap);
-            marker.bindPopup("<b>Hello world!</b><br>I am a popup."); //Abrir pop up automaticamente al cargar { .openPopup() }
-        </script>
+            <script>
+                var mymap = L.map('mapid').setView([20.659698, -103.349609], 13);
+                L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoiam1hbnVlbC1jaGFpcmV6IiwiYSI6ImNqa3dwbmxrZjAwZHczcXA0Nndud3k2NncifQ.9Wg2JDWZnmr1J57aPT1_rQ', {
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                    maxZoom: 18,
+                    id: 'mapbox.streets',
+                    accessToken: 'pk.eyJ1Ijoiam1hbnVlbC1jaGFpcmV6IiwiYSI6ImNqa3dwbmxrZjAwZHczcXA0Nndud3k2NncifQ.9Wg2JDWZnmr1J57aPT1_rQ'
+                }).addTo(mymap);
+                var marker = L.marker([20.659698, -103.349609]).addTo(mymap);
+                marker.bindPopup("<b>Hello world!</b><br>I am a popup."); //Abrir pop up automaticamente al cargar { .openPopup() }
+            </script>
         </section>
         <section class="about-us-contact d-flex flex-column">
             <form class="m-3">
@@ -55,14 +65,17 @@
                         <input type="text" class="form-control" id="contact-name" placeholder="Nombre">
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                               placeholder="name@example.com">
                     </div>
                 </div>
                 <div class="form-group col-12">
                     <textarea class="form-control" id="contact-textarea" rows="10" placeholder="Texto"></textarea>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a class="about-us-sendbtn" href="#"><button class="btn btn-success p-3">Enviar</button></a>
+                    <a class="about-us-sendbtn" href="#">
+                        <button class="btn btn-success p-3">Enviar</button>
+                    </a>
                 </div>
             </form>
         </section>

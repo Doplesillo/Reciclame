@@ -1,96 +1,107 @@
 /* ## Base Document's Structure ## */
 html {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 main {
-  /* flex: 1; would be enough but it looks bad in IE */
-  display: flex;
-  flex: 1 0 auto; /*flex grow - flex shrink - flex basis*/
+    /* flex: 1; would be enough but it looks bad in IE */
+    display: flex;
+    flex: 1 0 auto; /*flex grow - flex shrink - flex basis*/
 
 }
 
 /* Unimportant part */
 body {
-  font: 16px/1.5 sans-serif;
+    font: 16px/1.5 sans-serif;
 }
+
 p {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 }
-header, footer {
-  padding: 2em;
-  color: white;
-}
+
 header {
-  background-color: whitesmoke;s
+    background-color: white;
 }
+
 main {
-  background-color: white;
+    background-color: white;
 }
+
 footer {
-  background-color: #001F3F;
+    background-color: #001F3F;
+    padding: 2em;
+    color: white;
 }
-article{
-  width: 100%;
+
+article {
+    width: 100%;
 }
 
 /* Classes Being used on all the page */
-.section-name{
-  background: linear-gradient(to right, #528F1E , #6DBB29);
-  color: white;
+.section-name {
+    background: linear-gradient(to right, #528F1E, #6DBB29);
+    color: white;
 }
+
 /* Index Classes */
 
 /* About us Classes */
-.centros-title{
-  text-align: center;
-}
-.centros-background{
-   background-color:#ECF2F3;
-}
-.about-us-map{
-  height: 400px;
-}
-.about-us-contact{
-  background-color:#ECF2F3;
-}
-.about-us-sendbtn{
-  width: 30%;
-  text-align: center;
+.centros-title {
+    text-align: center;
 }
 
-/* Schedule appointment classes */
-.schedule-map{
-  background-color:#ECF2F3;
+.centros-background {
+    background-color: #ECF2F3;
 }
-#mapid {
+
+.about-us-map {
     height: 400px;
 }
 
+.about-us-contact {
+    background-color: #ECF2F3;
+}
+
+.about-us-sendbtn {
+    width: 30%;
+    text-align: center;
+}
+
+/* Schedule appointment classes */
+.schedule-map {
+    background-color: #ECF2F3;
+}
+
+#mapid {
+    height: 400px;
+}
+/*
 input[type="date"]:before {
     content: attr(placeholder) !important;
     color: #aaa;
     margin-right: 0.5em;
-  }
+}
+
 input[type="date"]:focus:before,
 input[type="date"]:valid:before {
     content: "";
-  }
-input[type="time"]:before {
-    content: attr(placeholder) !important;
-    color: #aaa;
-    margin-right: 0.5em;
-  }
-input[type="time"]:focus:before,
-input[type="time"]:valid:before {
-    content: "";
-  }
-
+}
+*/
 
 /* Partners Classes */
+.partner-img{
+    height: 180px;
+    min-height: 120px;
+}
+/* Catalogo */
+
+/* Sobreescritura de bootstarp 4*/
+.card-img-top {
+    width: auto;
+}

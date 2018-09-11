@@ -21,4 +21,10 @@ def registro(request):
 def login(request):
     return render(request, 'webpage/login.html')
 
+def catalogo(request):
+    return render(request, 'webpage/catalogo.html')
+
+def perfil(request):
+    return render(request, 'webpage/perfil.html')
+
 
