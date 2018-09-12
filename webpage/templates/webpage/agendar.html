@@ -11,56 +11,64 @@
             <p>Elige el centro de acopio donde deseas llevar tus residuos</p>
         </section>
         <section class="schedule-map">
-             <div id="mapid"></div>
+            <div id="mapid"></div>
         </section>
         <section class="schedule-map-form container p-4">
-            <form>
-              <div class="form-group">
-                <label for="exampleFormControlSelect1">Centro de Acopio</label>
-                <select class="form-control" id="acopio">
-                  <option value="centro_1">Estadio</option>
-                  <option value="centro_2">Chapalita</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlSelect2">Fecha</label>
-                <input type="date"  class="form-control mb-3">
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlSelect1">Residuos Electronicos</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <input type="number" class="form-control">
-              </div>
+            <form class="d-flex flex-wrap">
+                <div class="form-group col-12">
+                    <label for="exampleFormControlSelect1">Centro de Acopio</label>
+                    <select class="form-control" id="acopio">
+                        <option value="centro_1">Estadio</option>
+                        <option value="centro_2">Chapalita</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group col-12">
+                    <label for="exampleFormControlSelect2">Fecha</label>
+                    <input type="date" class="form-control mb-3">
+                </div>
+                <div class="form-group col-lg-4">
+                    <label for="exampleFormControlSelect1">Residuos Electronicos</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>Pilas</option>
+                        <option>Celulares</option>
+                        <option></option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group col-lg-4">
+                    <label for="num-residuos"> Numero a llevar</label>
+                    <input id="num-residuos" type="number" class="form-control">
+                </div>
+                <div class="form-group col-lg-4">
+                    <label for="num-residuos">Espacios Restantes en Sucursal</label>
+                    <input id="num-residuos" type="number" class="form-control" disabled >
+                </div>
+                <div class="d-flex justify-content-center align-items-center w-100">
+                   <button class="btn btn-success"> Agendar Cita! </button>
+                </div>
             </form>
         </section>
         <!-- leaflet + mapbox -->
         <script>
-        var mymap = L.map('mapid').setView([20.659698, -103.349609], 13);
-        L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoiam1hbnVlbC1jaGFpcmV6IiwiYSI6ImNqa3dwbmxrZjAwZHczcXA0Nndud3k2NncifQ.9Wg2JDWZnmr1J57aPT1_rQ', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox.streets',
-            accessToken: 'pk.eyJ1Ijoiam1hbnVlbC1jaGFpcmV6IiwiYSI6ImNqa3dwbmxrZjAwZHczcXA0Nndud3k2NncifQ.9Wg2JDWZnmr1J57aPT1_rQ'
-        }).addTo(mymap);
-        var marker = L.marker([20.659698, -103.349609]).addTo(mymap);
-        marker.bindPopup("<b>Hello world!</b><br>I am a popup."); //Abrir pop up automaticamente al cargar { .openPopup() }
-        marker.on('click', onMapClick);
+            var mymap = L.map('mapid').setView([20.659698, -103.349609], 13);
+            L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoiam1hbnVlbC1jaGFpcmV6IiwiYSI6ImNqa3dwbmxrZjAwZHczcXA0Nndud3k2NncifQ.9Wg2JDWZnmr1J57aPT1_rQ', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox.streets',
+                accessToken: 'pk.eyJ1Ijoiam1hbnVlbC1jaGFpcmV6IiwiYSI6ImNqa3dwbmxrZjAwZHczcXA0Nndud3k2NncifQ.9Wg2JDWZnmr1J57aPT1_rQ'
+            }).addTo(mymap);
+            var marker = L.marker([20.659698, -103.349609]).addTo(mymap);
+            marker.bindPopup("<b>Hello world!</b><br>I am a popup."); //Abrir pop up automaticamente al cargar { .openPopup() }
+            marker.on('click', onMapClick);
 
-        function onMapClick(e) {
-            document.getElementById('acopio').value="centro_2";
-        }
+            function onMapClick(e) {
+                document.getElementById('acopio').value = "centro_2";
+            }
 
-    </script>
+        </script>
     </article>
 {% endblock %}

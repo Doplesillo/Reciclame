@@ -100,7 +100,16 @@ input[type="date"]:valid:before {
     min-height: 120px;
 }
 /* Catalogo */
-
+/*Perfil*/
+.num-icon{
+    padding: 1rem 2rem;
+    background-color: #9fcdff;
+    font-weight: bolder;
+    font-size:xx-large;
+    -webkit-box-shadow: 6px 3px 9px -3px rgba(179,173,179,1);
+    -moz-box-shadow: 6px 3px 9px -3px rgba(179,173,179,1);
+    box-shadow: 6px 3px 9px -3px rgba(179,173,179,1);
+}
 /* Sobreescritura de bootstarp 4*/
 .card-img-top {
     width: auto;
