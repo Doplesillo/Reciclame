@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import auth
+from .models import *
 
 
 # Create your views here.
@@ -23,7 +24,10 @@ def nosotros(request):
 
 
 def agendar(request):
-    return render(request, 'webpage/agendar.html')
+    lugares = centro.objects.all()
+    residuos = Residuo.objects.all()
+    limite = LimitWaste.objects.all()
+    return render(request, 'webpage/agendar.html', {'lugares':lugares,'residuos':residuos,'limite':limite})
 
 
 def partners(request):
