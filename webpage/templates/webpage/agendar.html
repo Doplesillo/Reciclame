@@ -2,13 +2,13 @@
 {% load static %}
 {% block contenedor %}
     <article>
-        <section class="section-name p-2">
+        <section class="section-name p-2 pl-4">
             <h4>Agenda tu cita</h4>
         </section>
         <section class="section-title p-3">
             <h3>Registro de tu cita</h3>
             <h5>Centros de Acopio</h5>
-            <p>Elige el centro de acopio donde deseas llevar tus residuos</p>
+            <p>Elige el centro de acopio donde deseas llevar tus residuos y aparatos electrónicos</p>
         </section>
         <section class="schedule-map">
             <div id="mapid"></div>
@@ -28,7 +28,7 @@
                     <input type="date" class="form-control mb-3">
                 </div>
                 <div class="form-group col-lg-4">
-                    <label for="exampleFormControlSelect1">Residuos Electronicos</label>
+                    <label for="exampleFormControlSelect1">Residuos Electrónicos</label>
                     <select class="form-control" id="exampleFormControlSelect1">
                         {% for residuo in residuos %}
                         <option value="{{ residuo.id }}">{{ residuo.waste_name }}</option>
@@ -36,17 +36,17 @@
                     </select>
                 </div>
                 <div class="form-group col-lg-4">
-                    <label for="num-residuos"> Numero a llevar</label>
+                    <label for="num-residuos"> Numero de aparatos a llevar</label>
                     <input id="num-residuos" type="number" class="form-control" min="0">
                 </div>
                 <div class="form-group col-lg-4">
-                    <label for="num-residuos">Espacios Restantes en Sucursal</label>
+                    <label for="num-residuos">Espacios Disponibles en Sucursal</label>
                     {% for limit in limite %}
                           <input id="num-residuos" type="number" class="form-control"  placeholder="{{ limit.limit }}" disabled >
                     {% endfor %}
                 </div>
                 <div class="d-flex justify-content-center align-items-center w-100">
-                   <button class="btn btn-success"> Agendar Cita! </button>
+                   <button class="btn btn-success"> Agendar Cita </button>
                 </div>
             </form>
         </section>
