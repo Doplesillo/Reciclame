@@ -5,77 +5,42 @@
         <section class="section-name p-2">
             <h4>Catalogo</h4>
         </section>
-        <section class="d-flex flex-column flex-md-row partners-background">
-            <div class="row p-4 flex-wrap">
-                <div class="col-md-3">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top"
-                             src="https://placehold.it/335x225"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-center align-items-center">
-                                <button class="btn btn-success">Canjear Producto</button>
+        {% if premios %}
+            <section class="d-flex flex-column flex-md-row partners-background">
+
+                <div class="row p-4 flex-wrap">
+                    {% for premio in premios %}
+                        <div class="col-md-3">
+                            <div class="card mb-4 box-shadow">
+                                <img class="card-img-top"
+                                     src="media/{{ premio.image }}"
+                                     alt="Card image cap" height="230px">
+                                <div class="card-body">
+                                    <h3>{{ premio.title }}</h3>
+                                    {% if premio.stock <= 0 %}
+                                        <span style="color: red;">Agotado</span>
+                                    {% elif premio.stock <= 30 and premio.stock > 0 %}
+                                        <span style="color: goldenrod;">Pocas Existencias</span>
+                                    {% elif premio.stock > 30 %}
+                                        <span style="color: Green;">Existencias</span>
+                                    {% endif %}
+                                    <p class="card-text">{{ premio.description }}</p>
+                                    <p class="text-center"><i>{{ premio.reward_points }} Puntos</i></p>
+                                    <form class="d-flex justify-content-center align-items-center" action="{% url 'webpage:catalogo' %}" method="post">
+                                        {% csrf_token %}
+                                        <input class="premio-placeholder btn btn-success" name="canje" placeholder="Canjear Producto">
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
-                <div class="col-md-3">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top"
-                             src="https://placehold.it/335x225"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-center align-items-center">
-                                <button class="btn btn-success">Canjear Producto</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top"
-                             src="https://placehold.it/335x225"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-center align-items-center">
-                                <button class="btn btn-success">Canjear Producto</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top"
-                             src="https://placehold.it/335x225"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-center align-items-center">
-                                <button class="btn btn-success">Canjear Producto</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top"
-                             src="https://placehold.it/335x225"
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-center align-items-center">
-                                <button class="btn btn-success">Canjear Producto</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </section>
+            </section>
+        {% else %}
+            <section class="d-flex justify-content-center align-content-center mt-5">
+                <h2>No hay premios Disponibles</h2>
+            </section>
+        {% endif %}
+
     </article>
 {% endblock %}

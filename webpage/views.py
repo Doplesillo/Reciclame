@@ -77,7 +77,8 @@ def logout(request):
 
 
 def catalogo(request):
-    return render(request, 'webpage/catalogo.html')
+    premio = Premio.objects.order_by('-pub_date')
+    return render(request, 'webpage/catalogo.html',{'premios':premio})
 
 
 def perfil(request):
