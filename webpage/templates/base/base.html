@@ -42,12 +42,12 @@
             <img class="img-fluid" src="{% static "webpage/images/Logo completo copy.png" %}">
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav w-100">
+            <ul class="navbar-nav w-100 align-items-center">
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'webpage:index' %}">Inicio <span
                             class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ">
                     <a class="nav-link" href="{% url 'webpage:agendar' %}">Agenda tu cita</a>
                 </li>
                 <li class="nav-item">
@@ -64,19 +64,23 @@
                         <a class="btn btn-success" href="{% url 'webpage:perfil' %}">Mi Perfil</a>
                     </li>
                     <li class="nav-item ml-3">
-                        <a class="btn btn-danger" href="javascript:{document.getElementById('logout').submit()}" onclick="">Logout</a>
+                        <a class="btn btn-danger" href="javascript:{document.getElementById('logout').submit()}"
+                           onclick="">Logout</a>
                     </li>
                     <form id="logout" method="POST" action="{% url 'webpage:logout' %}">
                         {% csrf_token %}
                         <input type="hidden"/>
                     </form>
                 {% else %}
-                    <li class="nav-item ml-lg-auto">
-                        <a class="btn btn-outline-success" href="{% url 'webpage:registro' %}">Registro</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-primary ml-3" href="{% url 'webpage:login' %}">Inicio de sesión</a>
-                    </li>
+                    <div class="container d-flex flex-row justify-content-around">
+                        <li class="nav-item ml-lg-auto">
+                            <a class="btn btn-outline-success" href="{% url 'webpage:registro' %}">Registro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary ml-3" href="{% url 'webpage:login' %}">Inicio de
+                                sesión</a>
+                        </li>
+                    </div>
                 {% endif %}
             </ul>
         </div>

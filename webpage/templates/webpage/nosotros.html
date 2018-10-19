@@ -45,18 +45,90 @@
         </section>
         <section class="about-us-map d-flex flex-column">
             <div id="mapid"></div>
-            <!-- leaflet + mapbox -->
-            <script>
-                var mymap = L.map('mapid').setView([20.659698, -103.349609], 13);
-                L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoiam1hbnVlbC1jaGFpcmV6IiwiYSI6ImNqa3dwbmxrZjAwZHczcXA0Nndud3k2NncifQ.9Wg2JDWZnmr1J57aPT1_rQ', {
-                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                    maxZoom: 18,
-                    id: 'mapbox.streets',
-                    accessToken: 'pk.eyJ1Ijoiam1hbnVlbC1jaGFpcmV6IiwiYSI6ImNqa3dwbmxrZjAwZHczcXA0Nndud3k2NncifQ.9Wg2JDWZnmr1J57aPT1_rQ'
-                }).addTo(mymap);
-                var marker = L.marker([20.659698, -103.349609]).addTo(mymap);
-                marker.bindPopup("<b>Hello world!</b><br>I am a popup."); //Abrir pop up automaticamente al cargar { .openPopup() }
-            </script>
+             <!-- leaflet + mapbox -->
+        <script>
+            var mymap = L.map('mapid').setView([20.7407607,-103.3830465], 12);
+            L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoiam1hbnVlbC1jaGFpcmV6IiwiYSI6ImNqa3dwbmxrZjAwZHczcXA0Nndud3k2NncifQ.9Wg2JDWZnmr1J57aPT1_rQ', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox.streets',
+                accessToken: 'pk.eyJ1Ijoiam1hbnVlbC1jaGFpcmV6IiwiYSI6ImNqa3dwbmxrZjAwZHczcXA0Nndud3k2NncifQ.9Wg2JDWZnmr1J57aPT1_rQ'
+            }).addTo(mymap);
+            var Cucea = L.marker([20.7407607,-103.38304659]).addTo(mymap);
+            Cucea.bindPopup("<b>Centro Universitario de Ciencias Economico Administrativas</b>" +
+                "<br>9:00am - 5:00pm" +
+                "<br>Lunes a Viernes" +
+                "<br><ul><li>Electrodomesticos</li><li>Pilas</li><li>Computo</li><li>Televisión</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
+            Cucea.on('click', onMapClick);
+
+            var Ecole = L.marker([20.6443414,-103.438884]).addTo(mymap);
+            Ecole.bindPopup("<b>ECOLE</b>" +
+                "<br>8:30am - 4:30pm" +
+                "<br>Lunes a Sabado" +
+                "<br><ul><li>Electrodomesticos</li><li>Pilas</li><li>Computo</li><li>Televisión</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
+            Ecole.on('click', onMapClick);
+
+            var EcoleGranja = L.marker([20.6844813,-103.4502551]).addTo(mymap);
+            EcoleGranja.bindPopup("<b>Ecole Cd.Granja</b>" +
+                "<br>8:30am - 4:30pm" +
+                "<br>Lunes a Sabado" +
+                "<br><ul><li>Electrodomesticos</li><li>Pilas</li><li>Computo</li><li>Televisión</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
+            EcoleGranja.on('click', onMapClick);
+
+            var ReZapopan = L.marker([20.7326378,-103.4002075]).addTo(mymap);
+            ReZapopan.bindPopup("<b>Recicladora Zapopan</b>" +
+                "<br>9:00am - 7:00pm" +
+                "<br>Lunes a Viernes" +
+                "<br><ul><li>Electrodomesticos</li><li>Pilas</li><li>Computo</li><li>Televisión</li><li>Celulares</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
+            ReZapopan.on('click', onMapClick);
+
+            var UAG = L.marker([20.6947053,-103.4203198]).addTo(mymap);
+            UAG.bindPopup("<b>Universidad Autonoma de Guadalajara</b>" +
+                "<br>9:00am - 5:00pm" +
+                "<br>Lunes a Viernes" +
+                "<br><ul><li>Electrodomesticos</li><li>Pilas</li><li>Computo</li><li>Televisión</li><li>Celulares</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
+            UAG.on('click', onMapClick);
+
+            var Recumatrec = L.marker([20.6346299,-103.473049]).addTo(mymap);
+            Recumatrec.bindPopup("<b>Recumatrec</b>" +
+                "<br>8:30am - 4:30pm" +
+                "<br>Lunes a Sabado" +
+                "<br><ul><li>Electrodomesticos</li><li>Pilas</li><li>Computo</li><li>Televisión</li><li>Celulares</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
+            Recumatrec.on('click', onMapClick);
+
+            var HaciendaJavier = L.marker([20.7021357,-103.4089061]).addTo(mymap);
+            HaciendaJavier.bindPopup("<b>Club Hacienda San Javier</b>" +
+                "<br>9:00am - 7:00pm" +
+                "<br>Lunes a Sabado" +
+                "<br><ul><li>Electrodomesticos</li><li>Pilas</li><li>Computo</li><li>Televisión</li><li>Celulares</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
+            HaciendaJavier.on('click', onMapClick);
+
+            var Metropolitano = L.marker([20.6710204,-103.4386838]).addTo(mymap);
+            Metropolitano.bindPopup("<b>Parque Metropolitano</b>" +
+                "<br>8:00am - 2:00pm" +
+                "<br>Lunes a Domingo" +
+                "<br><ul><li>Pilas</li><li>Celulares</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
+            Metropolitano.on('click', onMapClick);
+
+            var Colomos = L.marker([20.7087217,-103.3957871]).addTo(mymap);
+            Colomos.bindPopup("<b>Bosque Colomos</b>" +
+                "<br>8:00am - 2:00pm" +
+                "<br>Lunes a Domingo" +
+                "<br><ul><li>Pilas</li><li>Celulares</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
+            Colomos.on('click', onMapClick);
+
+            var CAnahuac = L.marker([20.6679085,-103.4126439]).addTo(mymap);
+            CAnahuac.bindPopup("<b>Colegio Anahuac Chapalita</b>" +
+                "<br>8:00am - 3:00pm" +
+                "<br>Lunes a Viernes" +
+                "<br><ul><li>Electrodomesticos</li><li>Pilas</li><li>Computo</li><li>Televisión</li><li>Celulares</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
+            CAnahuac.on('click', onMapClick);
+            //Funcion necesaria para elemento onclick
+            function onMapClick(e) {
+
+            }
+
+        </script>
         </section>
 
         <section class="about-us-contact d-flex flex-column justify-content-center align-content-center
