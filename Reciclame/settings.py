@@ -25,7 +25,7 @@ SECRET_KEY = 'mp(v3perhv*5_pmm(v6a5s#fkn_2#%3c+rdtx^1rclt_7@wb1p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.2.56','localhost','0.0.0.0','10.10.61.234']
+ALLOWED_HOSTS = ['192.168.2.56','localhost','0.0.0.0','10.10.61.234','127.0.0.1']
 
 
 # Application definition
@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'reciclamedb',
         'USER': 'root',
-        'PASSWORD': 'mysql123',
+        'PASSWORD': 'becario',
         'HOST': 'localhost',
         'PORT': '3306',
     }
