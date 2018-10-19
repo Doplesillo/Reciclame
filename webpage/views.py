@@ -82,8 +82,9 @@ def catalogo(request):
 
 
 def perfil(request):
-    return render(request, 'webpage/perfil.html')
+    puntos = request.user.userpoints
+    return render(request, 'webpage/perfil.html',{'user':request.user,'puntos': puntos})
 
 def citas(request):
-    return render(request, 'webpage/citas.html')
+    return render(request, 'webpage/citas.html',{'user':request.user})
 

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=None)
+    user = models.OneToOneField(User, on_delete=None,related_name='userpoints')
     total_points = models.IntegerField(default=0)
 
     def __str__(self):
