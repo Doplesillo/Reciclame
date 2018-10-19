@@ -83,3 +83,7 @@ def catalogo(request):
 
 def perfil(request):
     return render(request, 'webpage/perfil.html')
+
+def citas(request):
+    return render(request, 'webpage/citas.html')
+
