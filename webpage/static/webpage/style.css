@@ -117,3 +117,10 @@ input[type="date"]:valid:before {
 .premio-placeholder::placeholder{
     color: white;
 }
+.index-head{
+    background: linear-gradient(to left, #528F1E, #6DBB29);
+    color: white;
+}
+.list-green{
+    color: #528F1E;
+}

@@ -4,46 +4,111 @@
     <article>
         <section>
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img class="w-100" src="{% static "webpage/images/eco.png" %}" alt="First slide">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>cap 1</h5>
-                      <p>...</p>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="w-100" src="{% static "webpage/images/eco.png" %}" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>cap 1</h5>
+                            <p>...</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static "webpage/images/free.png" %}" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>cap 2</h5>
+                            <p>...</p>
+                        </div>
+                    </div>
+                    {% static %}
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static "webpage/images/arbol.png" %}" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>cap 3</h5>
+                            <p>...</p>
+                        </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="{% static "webpage/images/free.png" %}" alt="Second slide">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>cap 2</h5>
-                      <p>...</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="{% static "webpage/images/arbol.png" %}" alt="Third slide">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>cap 3</h5>
-                      <p>...</p>
-                    </div>
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
         </section>
-        <section class="m-4">
+        <section class="p-4 index-head ">
+            <div class="d-flex flex-column align-items-center">
+                <h2 class="display-4">Se parte del cambio</h2>
+                <h4>Recicla tus reciduos electrónicos con nosotros y obtén varios beneficios</h4>
+                <p>Por cada producto que llevas a los centros de acopio acumularas puntos que podras cambiar por
+                    premios</p>
+            </div>
+        </section>
+        <section class="p-4 w-100">
             <div class="text-center">
-                <h2>¿Como Afecta la Contaminacion Electronica?</h2>
+                <h3>Pasos para Reciclar</h3>
             </div>
-            <div class="mt-5">
-               <img class="w-100" src="{% static "webpage/images/info.jpg" %}">
+            <div class="row">
+                <div class="col-md-12 d-flex flex-row flex-wrap">
+                    <div class="col-md-6 d-flex flex-column p-2">
+                        <h5 class="list-green">1.- Registrate en nuestra pagina web</h5>
+                        <p class="m-0 p-0">Crea una cuenta en Reciclame, es muy facil y sencillo.<br> Solo llena el
+                            formulario con tu sdatos y unete al cambio.</p>
+                    </div>
+                    <div class="col-md-6 d-flex flex-column p-2">
+                        <h5 class="list-green">2.- Agenda una cita</h5>
+                        <p class="m-0 p-0">Encuentra el centro de acopio más cercano y elige el dia y la hora que puedas
+                            entregar tus residuos electronicos.</p>
+                    </div>
+                    <div class="col-md-6 d-flex flex-column p-2">
+                        <h5 class="list-green">3.- Entrega tus residuos electronicos</h5>
+                        <p class="m-0 p-0">Asiste a la cita que agendaste y lleva tus residuos a nuestro equipo de
+                            trabajo de Reciclame</p>
+                    </div>
+                    <div class="col-md-6 d-flex flex-column p-2">
+                        <h5 class="list-green">4.- Canjea tus puntos</h5>
+                        <p class="m-0 p-0 text-list">Por cada residuo electronico que entregues, obtendras puntos que
+                            posteriormente podras canjear por los premios
+                            que ofrecen nuestros partners en nuestra pagina web.</p>
+                    </div>
+                </div>
             </div>
+        </section>
+        <section style="background-color: #e8eff3;">
+            <div class="row w-100">
+                <div class="text-center container">
+                    <h2 class="m-4">Puntos por Reciclar</h2>
+                    <h5>Estos son los puntos que obtendras por los residuos electronicos que lleves a nuestros Centros de Acopio, entre más productos recicles
+                    podras aumentar tus premios. <span class="list-green">Animate y recicla con nosotros</span></h5>
+                </div>
+                <div class="col-md-12 d-flex flex-row flex-wrap">
+                    <div class="col-md-4 d-flex flex-column p-3">
+                        <img src="{% static "webpage/images/recicla-04.png" %}">
+                        <p>Electrodomesticos</p>
+                    </div>
+                    <div class="col-md-4 d-flex flex-column p-3">
+                        <img src="{% static "webpage/images/recicla-05.png" %}">
+                        <p>Pilas y Baterias</p>
+                    </div>
+                    <div class="col-md-4 d-flex flex-column p-3">
+                        <img src="{% static "webpage/images/recicla-06.png" %}">
+                        <p>Equipos de Computo</p>
+                    </div>
+                    <div class="col-md-4 d-flex flex-column p-3">
+                        <img src="{% static "webpage/images/recicla-08.png" %}">
+                        <p>Televisiones</p>
+                    </div>
+                    <div class="col-md-4 d-flex flex-column p-3">
+                        <img src="{% static "webpage/images/recicla-07.png" %}">
+                        <h5>Celulares y Cargadores</h5>
+                    </div>
+                    <div class="col-md-4 d-flex flex-column p-3">
+                        <img src="{% static "webpage/images/recicla-09.png" %}">
+                        <p>Impresoras</p>
+                    </div>
+                </div>
         </section>
     </article>
 {% endblock %}
