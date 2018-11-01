@@ -2,8 +2,28 @@
 {% load static %}
 {% block contenedor %}
     <article>
-        <section class="section-name p-2 pl-4">
+        <section class="section-name p-2 pl-4 d-flex flex-row align-items-center">
             <h4>Catalogo</h4>
+            <div class="d-none d-lg-block ml-auto">
+                <div class="btn btn-danger ml-2">
+                    <i class="fas fa-tv ml-auto"> TV = 100</i>
+                </div>
+                <div class="btn btn-dark ml-2">
+                    <i class="fas fa-laptop"> PC = 15 </i>
+                </div>
+                <div class="btn btn-info ml-2">
+                    <i class="fas fa-battery-empty"> Pilas = 5</i>
+                </div>
+                <div class="btn btn-light ml-2">
+                    <i class="fas fa-blender"> Electrodomesticos = 20 </i>
+                </div>
+                <div class="btn btn-warning ml-2">
+                    <i class="fas fa-mobile-alt"> Celulares = 10</i>
+                </div>
+                <div class="btn btn-success ml-2">
+                    <i class="fas fa-print"> Impresoras = 25</i>
+                </div>
+            </div>
         </section>
         {% if premios %}
             <section class="d-flex flex-column flex-md-row partners-background">
@@ -26,9 +46,11 @@
                                     {% endif %}
                                     <p class="card-text">{{ premio.description }}</p>
                                     <p class="text-center"><i>{{ premio.reward_points }} Puntos</i></p>
-                                    <form class="d-flex justify-content-center align-items-center" action="{% url 'webpage:catalogo' %}" method="post">
+                                    <form class="d-flex justify-content-center align-items-center"
+                                          action="{% url 'webpage:catalogo' %}" method="post">
                                         {% csrf_token %}
-                                        <input class="premio-placeholder btn btn-success" name="canje" placeholder="Canjear Producto">
+                                        <input class="premio-placeholder btn btn-success" name="canje"
+                                               placeholder="Canjear Producto">
                                     </form>
                                 </div>
                             </div>

@@ -12,5 +12,7 @@ urlpatterns = [
     path('catalogo', views.catalogo, name='catalogo'),
     path('perfil', views.perfil, name='perfil'),
     path('logout', views.logout, name='logout'),
-    path('citas', views.citas , name='citas'),
+    path('citas', views.citas, name='citas'),
+    path('centro', views.loginCentro, name='login-centro'),
+    path('centro/inicio', views.centro, name='centro'),
 ]

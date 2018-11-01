@@ -88,3 +88,10 @@ def perfil(request):
 def citas(request):
     return render(request, 'webpage/citas.html',{'user':request.user})
 
+
+def centro(request):
+    return render(request, 'webpage/centro.html')
+
+def loginCentro(request):
+    return render(request, 'webpage/login_centro.html')
+
