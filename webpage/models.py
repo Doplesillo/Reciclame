@@ -9,6 +9,8 @@ class UserProfile(models.Model):
     def __str__(self):
         return '%s %s %s' % (self.user.first_name, self.user.last_name, self.total_points)
 
+
+#Admin, Controlara los residuos disponibles para que no puedan levantar los centros cualquier residuo
 class Residuo(models.Model):
     waste_name =models.CharField(max_length=100)
     points = models.IntegerField(default=0)
@@ -16,23 +18,36 @@ class Residuo(models.Model):
     def __str__(self):
         return self.waste_name
 
-class centro(models.Model):
+#Admin, nomnbre de los centros de reciclaje disponibles
+class Centro(models.Model):
     place_name = models.CharField(max_length=100)
     place_email = models.CharField(max_length=100)
 
     def __str__(self):
         return self.place_name
 
+#El centro asigna los residuos que puede tener, siempre y cuando solo sea los dados de alta
+class ResiduoLugar(models.Model):
+    lugar = models.ForeignKey(Centro, on_delete=models.CASCADE)
+    residuo = models.ForeignKey(Residuo, on_delete=models.CASCADE)
+    limite = models.IntegerField()
+
+    def __str__(self):
+        return '%s - %s' % (self.lugar.place_name, self.residuo.waste_name)
+
 
 class Punto(models.Model):
     user = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
     waste = models.ForeignKey(Residuo, on_delete=models.CASCADE)
+    cantidad = models.IntegerField()
+    total = models.IntegerField()
+
 
     def __str__(self):
         return '%s %s' % (self.user, self.waste)
 
 class LimitWaste(models.Model):
-    place = models.ForeignKey(centro, on_delete=models.CASCADE)
+    place = models.ForeignKey(Centro, on_delete=models.CASCADE)
     waste = models.ForeignKey(Residuo, on_delete=models.CASCADE)
     limit = models.IntegerField(default=0)
 

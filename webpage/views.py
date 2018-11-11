@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import *
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -23,8 +24,10 @@ def nosotros(request):
     return render(request, 'webpage/nosotros.html')
 
 
+
+@login_required(login_url="/login")
 def agendar(request):
-    lugares = centro.objects.all()
+    lugares = Centro.objects.all()
     residuos = Residuo.objects.all()
     limite = LimitWaste.objects.all()
     return render(request, 'webpage/agendar.html', {'lugares':lugares,'residuos':residuos,'limite':limite})
@@ -82,8 +85,19 @@ def catalogo(request):
 
 
 def perfil(request):
-    puntos = request.user.userpoints
-    return render(request, 'webpage/perfil.html',{'user':request.user,'puntos': puntos})
+    articulos = Punto.objects.filter(user__user=request.user).all()
+    for numero in articulos:
+        numeros = numero.cantidad * numero.waste.points
+    print(articulos)
+    print(request.user.id)
+    puntos = 0
+    for articulo in articulos:
+        puntos = articulo.cantidad * articulo.waste.points + puntos
+        print(articulo)
+        print(puntos)
+    print("===============")
+    print(puntos)
+    return render(request, 'webpage/perfil.html',{'user':request.user,'articulos':articulos,'puntos':puntos})
 
 def citas(request):
     return render(request, 'webpage/citas.html',{'user':request.user})

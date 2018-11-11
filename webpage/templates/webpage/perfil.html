@@ -21,52 +21,13 @@
             <div class="container d-flex flex-column mt-3">
                 <h3>Residuos Reciclados</h3>
                 <p>Estos son los residuos electronicos que has entregado</p>
-                <div class="d-flex align-items-center justify-content-around p-3 flex-wrap">
+                {% for articulo in articulos %}
+                    <div class="d-flex align-items-center justify-content-around p-3 flex-wrap">
                     <div class="d-flex flex-column justify-content-center align-items-center">
-                        <b class="num-icon rounded-circle">0</b>
-                        <p class="mt-1">Pilas</p>
+                        <b class="num-icon rounded-circle">{{  articulo.cantidad }}</b>
+                        <p class="mt-1">{{ articulo.waste.waste_name }}</p>
                     </div>
-                    <div class="d-flex flex-column justify-content-center align-items-center m-2">
-                        <b class="num-icon rounded-circle">0</b>
-                        <p class="mt-1">Pilas</p>
-                    </div>
-                    <div class="d-flex flex-column justify-content-center align-items-center m-2">
-                        <b class="num-icon rounded-circle">1</b>
-                        <p class="mt-1">Pilas</p>
-                    </div>
-                    <div class="d-flex flex-column justify-content-center align-items-center m-2">
-                        <b class="num-icon rounded-circle">2</b>
-                        <p class="mt-1">Pilas</p>
-                    </div>
-                    <div class="d-flex flex-column justify-content-center align-items-center m-2">
-                        <b class="num-icon rounded-circle">10</b>
-                        <p class="mt-1">Pilas</p>
-                    </div>
-                    <div class="d-flex flex-column justify-content-center align-items-center m-2">
-                        <b class="num-icon rounded-circle">110</b>
-                        <p class="mt-1">Pilas</p>
-                    </div>
-                    <div class="d-flex flex-column justify-content-center align-items-center m-2">
-                        <b class="num-icon rounded-circle">1110</b>
-                        <p class="mt-1">Pilas</p>
-                    </div>
-                    <div class="d-flex flex-column justify-content-center align-items-center m-2">
-                        <b class="num-icon rounded-circle">0</b>
-                        <p class="mt-1">Pilas</p>
-                    </div>
-                    <div class="d-flex flex-column justify-content-center align-items-center m-2">
-                        <b class="num-icon rounded-circle">0</b>
-                        <p class="mt-1">Pilas</p>
-                    </div>
-                    <div class="d-flex flex-column justify-content-center align-items-center m-2">
-                        <b class="num-icon rounded-circle">0</b>
-                        <p class="mt-1">Pilas</p>
-                    </div>
-                    <div class="d-flex flex-column justify-content-center align-items-center m-2">
-                        <b class="num-icon rounded-circle">0</b>
-                        <p class="mt-1">Pilas</p>
-                    </div>
-
+                {% endfor %}
 
                 </div>
             </div>

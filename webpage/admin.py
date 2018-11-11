@@ -4,6 +4,7 @@ from .models import *
 admin.site.register(UserProfile)
 admin.site.register(Punto)
 admin.site.register(Residuo)
-admin.site.register(centro)
+admin.site.register(Centro)
 admin.site.register(LimitWaste)
 admin.site.register(Premio)
+admin.site.register(ResiduoLugar)
