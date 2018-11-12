@@ -54,6 +54,7 @@ class LimitWaste(models.Model):
     def __str__(self):
         return '%s %s limite: %s' % (self.place,self.waste,self.limit)
 
+
 class Premio(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=255)
