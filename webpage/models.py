@@ -1,13 +1,20 @@
 from django.db import models
-from django.contrib.auth.models import User
+
+from django.contrib.auth.models import AbstractUser
+import datetime
+from django.utils import timezone
 
 # Create your models here.
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=None,related_name='userpoints')
-    total_points = models.IntegerField(default=0)
+class UserProfile(AbstractUser):
+    ROLES =(
+        ('1','Usuario'),
+        ('2', 'Centro'),
+        ('3', 'Admin'),
+    )
+    rol = models.CharField(max_length=3, choices=ROLES)
+    puntos_totales = models.IntegerField(default=0)
 
-    def __str__(self):
-        return '%s %s %s' % (self.user.first_name, self.user.last_name, self.total_points)
+
 
 
 #Admin, Controlara los residuos disponibles para que no puedan levantar los centros cualquier residuo
@@ -65,3 +72,17 @@ class Premio(models.Model):
 
     def __str__(self):
         return self.title
+
+class Cita(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE,default=1)
+    lugar = models.ForeignKey(Centro, on_delete=models.CASCADE)
+    residuo = models.ForeignKey(Residuo, on_delete=models.CASCADE)
+    fecha_cita = models.DateField(auto_now=False)
+    num_residuos = models.IntegerField(default=1)
+    fecha_aprobacion = models.DateField(default=None, blank=True, null=True)
+
+    def __str__(self):
+        return self.fecha_cita
+
+
+

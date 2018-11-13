@@ -8,7 +8,7 @@
         <section class="d-flex flex-column partners-background">
             <div class="d-flex flex-row container mt-3 mb-3 align-items-center w-100">
                 <i class="far fa-user fa-3x"></i>
-                <h2 class="ml-2 mt-1">{{ user }}</h2>
+                <h2 class="ml-2 mt-1">{{ user.first_name }} {{ user.last_name }} "{{ user }}"</h2>
 
             </div>
             <div class="container">
@@ -16,18 +16,32 @@
                     <thead>
                     <tr>
                         <th scope="col">Lugar</th>
-                        <th scope="col">Fecha</th>
+                        <th scope="col">Usuario</th>
                         <th scope="col">Residuo</th>
                         <th scope="col">Numero</th>
+                        <th scope="col">fecha</th>
+                        <th scope="col">aprobación</th>
+                        <th scope="col">ID</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">Estadio</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+                    {% for citas in cita %}
+                        <tr>
+                            <th scope="row">{{ citas.lugar }}</th>
+                            <td>{{ citas.user.user.first_name }}</td>
+                            <td>{{ citas.residuo }}</td>
+                            <td>{{ citas.num_residuos }}</td>
+                            <td>{{ citas.fecha_cita }}</td>
+                            {% if citas.fecha_aprobacion is not none %}
+                                <td>{{ citas.fecha_aprobacion }}</td>
+                            {% else %}
+                                <td>
+                                        <button>Aprobar</button>
+                                </td>
+                            {% endif %}
+                            <td>{{ citas.id }}</td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>

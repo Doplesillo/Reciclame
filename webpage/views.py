@@ -24,13 +24,12 @@ def nosotros(request):
     return render(request, 'webpage/nosotros.html')
 
 
-
 @login_required(login_url="/login")
 def agendar(request):
     lugares = Centro.objects.all()
     residuos = Residuo.objects.all()
     limite = LimitWaste.objects.all()
-    return render(request, 'webpage/agendar.html', {'lugares':lugares,'residuos':residuos,'limite':limite})
+    return render(request, 'webpage/agendar.html', {'lugares': lugares, 'residuos': residuos, 'limite': limite})
 
 
 def partners(request):
@@ -64,14 +63,24 @@ def registro(request):
 
 def login(request):
     if request.method == 'POST':
-        user = auth.authenticate(username=request.POST['username'],password=request.POST['pass'])
+        user = auth.authenticate(username=request.POST['username'], password=request.POST['pass'])
         if user is not None:
+            usuario = UserProfile.objects.get(username=request.POST['username'])
             auth.login(request, user)
-            return redirect('webpage:index')
+            print(usuario.rol)
+            if usuario.rol == '1':
+                return redirect('webpage:index')
+            elif usuario.rol == '2':
+                return redirect('webpage:partners')
+            elif usuario.rol == '3':
+                return redirect('webpage:nosotros')
+            else:
+                return render(request, 'webpage/login.html',{'error':'la cuenta no tiene rol, habla con el administrador'})
         else:
-            return render(request, 'webpage/login.html', {'error':'username or password is incorrect'})
+            return render(request, 'webpage/login.html', {'error': 'username or password is incorrect'})
     else:
         return render(request, 'webpage/login.html')
+
 
 def logout(request):
     if request.method == 'POST':
@@ -81,7 +90,7 @@ def logout(request):
 
 def catalogo(request):
     premio = Premio.objects.order_by('-pub_date')
-    return render(request, 'webpage/catalogo.html',{'premios':premio})
+    return render(request, 'webpage/catalogo.html', {'premios': premio})
 
 
 def perfil(request):
@@ -97,15 +106,17 @@ def perfil(request):
         print(puntos)
     print("===============")
     print(puntos)
-    return render(request, 'webpage/perfil.html',{'user':request.user,'articulos':articulos,'puntos':puntos})
+    return render(request, 'webpage/perfil.html', {'user': request.user, 'articulos': articulos, 'puntos': puntos})
+
 
 def citas(request):
-    return render(request, 'webpage/citas.html',{'user':request.user})
+    cita = Cita.objects.filter(user__user=request.user).all()
+    return render(request, 'webpage/citas.html', {'user': request.user, 'cita': cita})
 
 
 def centro(request):
     return render(request, 'webpage/centro.html')
 
+
 def loginCentro(request):
     return render(request, 'webpage/login_centro.html')
-
