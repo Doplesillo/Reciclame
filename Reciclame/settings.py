@@ -133,3 +133,8 @@ EMAIL_HOST_USER = 'SMTP_Injection'
 EMAIL_HOST_PASSWORD = '7156a7f36a8d082b0eb9f4205c61dad6562c3eb1'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+try:
+    from .local_settings.py import *
+except ImportError:
+    pass
