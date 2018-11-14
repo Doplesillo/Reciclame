@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -25,8 +24,7 @@ SECRET_KEY = 'mp(v3perhv*5_pmm(v6a5s#fkn_2#%3c+rdtx^1rclt_7@wb1p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.2.56','localhost','0.0.0.0','10.10.61.234','127.0.0.1','206.189.161.88']
-
+ALLOWED_HOSTS = ['192.168.2.56', 'localhost', '0.0.0.0', '10.10.61.234', '127.0.0.1', '206.189.161.88']
 
 # Application definition
 
@@ -70,7 +68,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Reciclame.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -84,7 +81,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -104,7 +100,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -121,18 +116,21 @@ USE_TZ = True
 AUTH_USER_MODEL = 'webpage.UserProfile'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-EMAIL_HOST = 'smtp.sparkpostmail.com'
+SEND_GRID_API_KEY = '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'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'jmanuel.cucea'
+EMAIL_HOST_PASSWORD = 'dople951753'
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'SMTP_Injection'
-EMAIL_HOST_PASSWORD = '7156a7f36a8d082b0eb9f4205c61dad6562c3eb1'
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = 'jmanuel.chairez@cucea.udg.mx'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Email Recibido de Manuel'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 try:
     from .local_settings.py import *

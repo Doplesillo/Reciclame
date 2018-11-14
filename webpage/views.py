@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
-from django.contrib.auth.models import User
+from django.conf import settings
+from django.template.loader import get_template
 from django.contrib import auth
 from .models import *
 from django.contrib.auth.decorators import login_required
+import datetime
+
 
 
 # Create your views here.
@@ -12,14 +15,6 @@ def index(request):
 
 
 def nosotros(request):
-    """
-     send_mail('Hello from Reciclame', #subject
-               'Si funciona el service provider', #body
-               '', #domain email
-               ['manuelchairezudg@gmail.com'], #email that recieve
-               fail_silently=False # show if fails
-               )
-     """
     return render(request, 'webpage/nosotros.html')
 
 
@@ -39,6 +34,12 @@ def agendar(request):
                 cita.num_residuos = request.POST['cantidad']
                 cita.user = UserProfile.objects.get(pk=request.session['id'])
                 cita.save()
+                send_mail('Hello from Reciclame',  # subject
+                          'Tienes una cita el dia'+ ' ' + str(cita.fecha_cita) + ' ' + 'en' + ' ' + str(cita.lugar) + ' ' + 'te esperamos',  # body
+                          'jmanuel.chairez@cucea.udg.mx',  # domain email
+                          ['manuelchairezudg@gmail.com'],  # email that recieve
+                          fail_silently=True  # show if fails
+                          )
                 return render(request, 'webpage/agendar.html',
                               {'success': 'Tu cita a sido Agendada exitosamente', 'lugares': lugares,
                                'residuos': residuos, 'limite': limite})
@@ -160,6 +161,11 @@ def logout(request):
 
 
 def catalogo(request):
+    try:
+        user = UserProfile.objects.get(pk=request.session['id'])
+    except:
+        premio = Premio.objects.order_by('-pub_date')
+        return render(request, 'webpage/catalogo.html', {'premios': premio})
     premio = Premio.objects.order_by('-pub_date')
     return render(request, 'webpage/catalogo.html', {'premios': premio})
 
