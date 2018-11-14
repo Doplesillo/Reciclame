@@ -29,7 +29,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="d-flex flex-row d-lg-none align-items-center justify-content-center w-100">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'webpage:index' %}">
                 <img class="img-fluid" src="{% static "webpage/images/Logo completo copy.png" %}">
             </a>
             <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
@@ -38,7 +38,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        <a class="navbar-brand d-none d-lg-flex" href="#">
+        <a class="navbar-brand d-none d-lg-flex" href="{% url 'webpage:index' %}">
             <img class="img-fluid" src="{% static "webpage/images/Logo completo copy.png" %}">
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -61,6 +61,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'webpage:catalogo' %}">Catalogo</a>
                 </li>
+                {% if user.rol == '2' %}
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'webpage:centro' %}">Revisar Citas</a>
+                    </li>
+                {% endif %}
                 {% if  user.is_authenticated %}
                     {% if user.rol == '1' %}
                         <li class="nav-item ml-lg-auto">
@@ -109,9 +114,10 @@
         <p>Recicl@ame</p>
         <p>Centrosreciclame@gmail.com</p>
         <p>
-            <i class="m-2 fab fa-facebook fa-3x"></i>
-            <i class="m-2 fab fa-instagram fa-3x"></i>
-            <i class="m-2 fab fa-twitter-square fa-3x"></i>
+            <a href="https://www.facebook.com/Reciclame-270737653628360/"><i class="m-2 fab fa-facebook fa-3x"></i></a>
+            <a href="https://www.instagram.com/reciclame/"><i class="m-2 fab fa-instagram fa-3x"></i></a>
+            <a href="https://www.youtube.com/channel/UCqHDoG3DJtijXNe4U-QXH-Q/featured?disable_polymer=1"><i
+                    class="m-2 fab fa-youtube fa-3x"></i></a>
         </p>
     </div>
 </footer>
