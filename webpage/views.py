@@ -68,13 +68,17 @@ def registro(request):
             if request.POST['pass'] == request.POST['pass2']:
                 if request.POST['email'] == request.POST['email2']:
                     user = UserProfile.objects.create_user(request.POST['username'],
-                                                    email=request.POST['email'],
-                                                    password=request.POST['pass'],
-                                                    rol='1')
+                                                           email=request.POST['email'],
+                                                           password=request.POST['pass'],
+                                                           rol='1')
                     user.first_name = request.POST['name']
                     user.last_name = request.POST['lastname']
                     user.save()
-                    auth.login(request,user)
+                    usuario = UserProfile.objects.get(username=request.POST['username'])
+                    request.session['username'] = usuario.username
+                    request.session['rol'] = usuario.rol
+                    request.session['id'] = usuario.pk
+                    auth.login(request, user)
                     return redirect('webpage:index')
                 else:
                     return render(request, 'webpage/registro.html', {'error': 'Los emails no son iguales'})
@@ -85,28 +89,44 @@ def registro(request):
 
 
 def registroCentro(request):
-    if request.method == 'POST':
-        if UserProfile.objects.filter(username=request.POST['username']).exists():
-            return render(request, 'webpage/registro-centro.html', {'error': 'Usuario ya registrado'})
-        elif UserProfile.objects.filter(email=request.POST['email']).exists():
-            return render(request, 'webpage/registro-centro.html', {'error': 'Email ya registrado'})
-        else:
-            # usuario no esta en database y quiere una cuenta nueva
-            if request.POST['pass'] == request.POST['pass2']:
-                if request.POST['email'] == request.POST['email2']:
-                    user = UserProfile.objects.create_user(request.POST['username'],
-                                                    email=request.POST['email'],
-                                                    password=request.POST['pass'],
-                                                    rol='2')
-                    user.save()
-                    auth.login(request,user)
-                    return redirect('webpage:index')
+    try:
+        user = UserProfile.objects.get(pk=request.session['id'])
+    except:
+        print('Entre ala exception')
+        return redirect('webpage:index')
+    if user is not None:
+        if user.rol == '1':
+            return redirect('webpage:index')
+        elif user.rol == '2':
+            return redirect('webpage:index')
+        elif user.rol == '3':
+            if request.method == 'POST':
+                if UserProfile.objects.filter(username=request.POST['username']).exists():
+                    return render(request, 'webpage/registro-centro.html', {'error': 'Usuario ya registrado'})
+                elif UserProfile.objects.filter(email=request.POST['email']).exists():
+                    return render(request, 'webpage/registro-centro.html', {'error': 'Email ya registrado'})
                 else:
-                    return render(request, 'webpage/registro-centro.html', {'error': 'Los emails no son iguales'})
+                    # usuario no esta en database y quiere una cuenta nueva
+                    if request.POST['pass'] == request.POST['pass2']:
+                        if request.POST['email'] == request.POST['email2']:
+                            user = UserProfile.objects.create_user(request.POST['username'],
+                                                                   email=request.POST['email'],
+                                                                   password=request.POST['pass'],
+                                                                   rol='2')
+                            user.save()
+                            return render(request, 'webpage/registro-centro.html',
+                                          {'exito': 'Registro Exitoso'})
+                        else:
+                            return render(request, 'webpage/registro-centro.html',
+                                          {'error': 'Los emails no son iguales'})
+                    else:
+                        return render(request, 'webpage/registro-centro.html',
+                                      {'error': 'Las contraseñas no son Iguales'})
             else:
-                return render(request, 'webpage/registro-centro.html', {'error': 'Las contraseñas no son Iguales'})
+                return render(request, 'webpage/registro-centro.html')
     else:
-        return render(request, 'webpage/registro-centro.html')
+        return redirect('webpage:index')
+
 
 def login(request):
     if request.method == 'POST':
@@ -121,9 +141,9 @@ def login(request):
             if usuario.rol == '1':
                 return redirect('webpage:index')
             elif usuario.rol == '2':
-                return redirect('webpage:partners')
+                return redirect('webpage:centro')
             elif usuario.rol == '3':
-                return redirect('webpage:nosotros')
+                return redirect('webpage:index')
             else:
                 return render(request, 'webpage/login.html',
                               {'error': 'la cuenta no tiene rol, habla con el administrador'})
@@ -187,12 +207,12 @@ def citas(request):
 @login_required(login_url="/login")
 def centro(request):
     user = UserProfile.objects.get(pk=request.session['id'])
-    cita = Cita.objects.filter(user=request.session['id']).all()
+    cita = Cita.objects.all()
     if user is not None:
         if user.rol == '1':
             return render(request, 'webpage/index.html')
         elif user.rol == '2':
-            return render(request, 'webpage/centro.html', {'user': user, 'cita':cita})
+            return render(request, 'webpage/centro.html', {'user': user, 'cita': cita})
         elif user.rol == '3':
             return render(request, 'webpage/index.html')
     else:
