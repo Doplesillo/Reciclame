@@ -66,6 +66,14 @@
                         <a class="nav-link" href="{% url 'webpage:centro' %}">Revisar Citas</a>
                     </li>
                 {% endif %}
+                {% if user.rol == '3' %}
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'admin:index' %}"><button class="btn btn-info">Admin Panel</button></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'webpage:registro-centro' %}"><button class="btn btn-primary">Agregar Usuario Centro</button></a>
+                    </li>
+                {% endif %}
                 {% if  user.is_authenticated %}
                     {% if user.rol == '1' %}
                         <li class="nav-item ml-lg-auto">

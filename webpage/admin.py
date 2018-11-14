@@ -9,3 +9,4 @@ admin.site.register(LimitWaste)
 admin.site.register(Premio)
 admin.site.register(ResiduoLugar)
 admin.site.register(Cita)
+admin.site.site_header = 'Reciclamex Admin'
