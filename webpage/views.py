@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
-from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import *
@@ -59,34 +58,55 @@ def partners(request):
 
 
 def registro(request):
-    #TODO
-    if user is not None:
-        if request.method == 'POST':
-            if User.objects.filter(username=request.POST['username']).exists():
-                return render(request, 'webpage/registro.html', {'error': 'Usuario ya registrado'})
-            elif User.objects.filter(email=request.POST['email']).exists():
-                return render(request, 'webpage/registro.html', {'error': 'Email ya registrado'})
-            else:
-                # usuario no esta en database y quiere una cuenta nueva
-                if request.POST['pass'] == request.POST['pass2']:
-                    if request.POST['email'] == request.POST['email2']:
-                        user = User.objects.create_user(request.POST['username'],
-                                                        email=request.POST['email'],
-                                                        password=request.POST['pass'])
-                        user.first_name = request.POST['name']
-                        user.last_name = request.POST['lastname']
-                        user.save()
-                        auth.login(request, user)
-                        return redirect('webpage:index')
-                    else:
-                        return render(request, 'webpage/registro.html', {'error': 'Los emails no son iguales'})
-                else:
-                    return render(request, 'webpage/registro.html', {'error': 'Las contraseñas no son Iguales'})
+    if request.method == 'POST':
+        if UserProfile.objects.filter(username=request.POST['username']).exists():
+            return render(request, 'webpage/registro.html', {'error': 'Usuario ya registrado'})
+        elif UserProfile.objects.filter(email=request.POST['email']).exists():
+            return render(request, 'webpage/registro.html', {'error': 'Email ya registrado'})
         else:
-            return render(request, 'webpage/registro.html')
+            # usuario no esta en database y quiere una cuenta nueva
+            if request.POST['pass'] == request.POST['pass2']:
+                if request.POST['email'] == request.POST['email2']:
+                    user = UserProfile.objects.create_user(request.POST['username'],
+                                                    email=request.POST['email'],
+                                                    password=request.POST['pass'],
+                                                    rol='1')
+                    user.first_name = request.POST['name']
+                    user.last_name = request.POST['lastname']
+                    user.save()
+                    auth.login(request,user)
+                    return redirect('webpage:index')
+                else:
+                    return render(request, 'webpage/registro.html', {'error': 'Los emails no son iguales'})
+            else:
+                return render(request, 'webpage/registro.html', {'error': 'Las contraseñas no son Iguales'})
     else:
-        return redirect('webpage:index')
+        return render(request, 'webpage/registro.html')
 
+
+def registroCentro(request):
+    if request.method == 'POST':
+        if UserProfile.objects.filter(username=request.POST['username']).exists():
+            return render(request, 'webpage/registro-centro.html', {'error': 'Usuario ya registrado'})
+        elif UserProfile.objects.filter(email=request.POST['email']).exists():
+            return render(request, 'webpage/registro-centro.html', {'error': 'Email ya registrado'})
+        else:
+            # usuario no esta en database y quiere una cuenta nueva
+            if request.POST['pass'] == request.POST['pass2']:
+                if request.POST['email'] == request.POST['email2']:
+                    user = UserProfile.objects.create_user(request.POST['username'],
+                                                    email=request.POST['email'],
+                                                    password=request.POST['pass'],
+                                                    rol='2')
+                    user.save()
+                    auth.login(request,user)
+                    return redirect('webpage:index')
+                else:
+                    return render(request, 'webpage/registro-centro.html', {'error': 'Los emails no son iguales'})
+            else:
+                return render(request, 'webpage/registro-centro.html', {'error': 'Las contraseñas no son Iguales'})
+    else:
+        return render(request, 'webpage/registro-centro.html')
 
 def login(request):
     if request.method == 'POST':
@@ -167,11 +187,12 @@ def citas(request):
 @login_required(login_url="/login")
 def centro(request):
     user = UserProfile.objects.get(pk=request.session['id'])
+    cita = Cita.objects.filter(user=request.session['id']).all()
     if user is not None:
         if user.rol == '1':
             return render(request, 'webpage/index.html')
         elif user.rol == '2':
-            return render(request, 'webpage/centro.html', {'user': user})
+            return render(request, 'webpage/centro.html', {'user': user, 'cita':cita})
         elif user.rol == '3':
             return render(request, 'webpage/index.html')
     else:

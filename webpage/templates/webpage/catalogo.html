@@ -46,12 +46,14 @@
                                     {% endif %}
                                     <p class="card-text">{{ premio.description }}</p>
                                     <p class="text-center"><i>{{ premio.reward_points }} Puntos</i></p>
-                                    <form class="d-flex justify-content-center align-items-center"
-                                          action="{% url 'webpage:catalogo' %}" method="post">
-                                        {% csrf_token %}
-                                        <input class="premio-placeholder btn btn-success w-75" name="canje"
-                                               placeholder="Canjear Producto">
-                                    </form>
+                                    {% if user.rol == '1' %}
+                                        <form class="d-flex justify-content-center align-items-center"
+                                              action="{% url 'webpage:catalogo' %}" method="post">
+                                            {% csrf_token %}
+                                            <input class="premio-placeholder btn btn-success w-75" name="canje"
+                                                   placeholder="Canjear Producto">
+                                        </form>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

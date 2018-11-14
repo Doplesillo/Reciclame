@@ -3,49 +3,43 @@
 {% block contenedor %}
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
+        <h1 class="h2"></h1>
     </div>
 
-    <h2>Section title</h2>
-    <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1,001</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td>dolor</td>
-                <td>sit</td>
-            </tr>
-
-            </tbody>
-        </table>
-        <div class="pagination">
-            <span class="step-links">
-                {% if contacts.has_previous %}
-                    <a href="?page=1">&laquo; first</a>
-                    <a href="?page={{ contacts.previous_page_number }}">previous</a>
-                {% endif %}
-
-                <span class="current">
-                    Pagina {{ contacts.number }} de {{ contacts.paginator.num_pages }}.
-                </span>
-
-                {% if contacts.has_next %}
-                    <a href="?page={{ contacts.next_page_number }}">next</a>
-                    <a href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a>
-                {% endif %}
-            </span>
-        </div>
-    </div>
+    <h2>Citas de {{ user }}</h2>
+    <div class="container">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Lugar</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Residuo</th>
+                        <th scope="col">Numero</th>
+                        <th scope="col">fecha</th>
+                        <th scope="col">aprobación</th>
+                        <th scope="col">ID</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for citas in cita %}
+                        <tr>
+                            <th scope="row">{{ citas.lugar }}</th>
+                            <td>{{ citas.user.user.first_name }}</td>
+                            <td>{{ citas.residuo }}</td>
+                            <td>{{ citas.num_residuos }}</td>
+                            <td>{{ citas.fecha_cita }}</td>
+                            {% if citas.fecha_aprobacion is not none %}
+                                <td>{{ citas.fecha_aprobacion }}</td>
+                            {% else %}
+                                <td>
+                                        <button>Aprobar</button>
+                                </td>
+                            {% endif %}
+                            <td>{{ citas.id }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
 {% endblock %}
