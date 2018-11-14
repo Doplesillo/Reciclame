@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'webpage/style.css' %}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+          integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
     <!-- mapbox only -->
     <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' /> -->
@@ -46,9 +47,11 @@
                     <a class="nav-link" href="{% url 'webpage:index' %}">Inicio <span
                             class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{% url 'webpage:agendar' %}">Agenda tu cita</a>
-                </li>
+                {% if user.rol == '1' %}
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'webpage:agendar' %}">Agenda tu cita</a>
+                    </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'webpage:nosotros' %}">Nosotros</a>
                 </li>
@@ -59,17 +62,28 @@
                     <a class="nav-link" href="{% url 'webpage:catalogo' %}">Catalogo</a>
                 </li>
                 {% if  user.is_authenticated %}
-                    <li class="nav-item ml-lg-auto">
-                        <a class="btn btn-success" href="{% url 'webpage:perfil' %}">Mi Perfil</a>
-                    </li>
-                    <li class="nav-item ml-3">
-                        <a class="btn btn-danger" href="javascript:{document.getElementById('logout').submit()}"
-                           onclick="">Logout</a>
-                    </li>
-                    <form id="logout" method="POST" action="{% url 'webpage:logout' %}">
-                        {% csrf_token %}
-                        <input type="hidden"/>
-                    </form>
+                    {% if user.rol == '1' %}
+                        <li class="nav-item ml-lg-auto">
+                            <a class="btn btn-success" href="{% url 'webpage:perfil' %}">Mi Perfil</a>
+                        </li>
+                        <li class="nav-item ml-3">
+                            <a class="btn btn-danger" href="javascript:{document.getElementById('logout').submit()}"
+                               onclick="">Logout</a>
+                        </li>
+                        <form id="logout" method="POST" action="{% url 'webpage:logout' %}">
+                            {% csrf_token %}
+                            <input type="hidden"/>
+                        </form>
+                    {% else %}
+                        <li class="nav-item ml-3 ml-lg-auto">
+                            <a class="btn btn-danger" href="javascript:{document.getElementById('logout').submit()}"
+                               onclick="">Logout</a>
+                        </li>
+                        <form id="logout" method="POST" action="{% url 'webpage:logout' %}">
+                            {% csrf_token %}
+                            <input type="hidden"/>
+                        </form>
+                    {% endif %}
                 {% else %}
                     <div class="container d-flex flex-row justify-content-around">
                         <li class="nav-item ml-lg-auto">
