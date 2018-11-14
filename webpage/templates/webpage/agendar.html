@@ -14,10 +14,11 @@
             <div id="mapid"></div>
         </section>
         <section class="schedule-map-form container p-4">
-            <form class="d-flex flex-wrap">
+            <form class="d-flex flex-wrap" method="post" action="">
+            {% csrf_token %}
                 <div class="form-group col-12">
                     <label for="exampleFormControlSelect1">Centro de Acopio</label>
-                    <select class="form-control" id="acopio">
+                    <select class="form-control" id="acopio" name="lugar">
                         {% for lugar in lugares %}
                         <option value="{{ lugar.id }}">{{ lugar.place_name }}</option>
                         {% endfor %}
@@ -25,11 +26,11 @@
                 </div>
                 <div class="form-group col-12">
                     <label for="exampleFormControlSelect2">Fecha</label>
-                    <input type="date" class="form-control mb-3">
+                    <input type="date" class="form-control mb-3" name="fecha">
                 </div>
                 <div class="form-group col-lg-4">
                     <label for="exampleFormControlSelect1">Residuos Electrónicos</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <select class="form-control" id="exampleFormControlSelect1" name="residuo">
                         {% for residuo in residuos %}
                         <option value="{{ residuo.id }}">{{ residuo.waste_name }}</option>
                         {% endfor %}
@@ -37,13 +38,13 @@
                 </div>
                 <div class="form-group col-lg-4">
                     <label for="num-residuos"> Numero de aparatos a llevar</label>
-                    <input id="num-residuos" type="number" class="form-control" min="0">
+                    <input id="num-residuos" type="number" class="form-control" min="0" name="cantidad">
                 </div>
                 <div class="form-group col-lg-4">
                     <label for="num-residuos">Espacios Disponibles en Sucursal</label>
-                    {% for limit in limite %}
-                          <input id="num-residuos" type="number" class="form-control"  placeholder="{{ limit.limit }}" disabled >
-                    {% endfor %}
+
+                          <input id="num-residuos" type="text" class="form-control"  placeholder="{{ user.username }}" >
+
                 </div>
                 <div class="d-flex justify-content-center align-items-center w-100">
                    <button class="btn btn-success"> Agendar Cita </button>

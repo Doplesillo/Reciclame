@@ -24,12 +24,24 @@ def nosotros(request):
     return render(request, 'webpage/nosotros.html')
 
 
+
 @login_required(login_url="/login")
 def agendar(request):
     lugares = Centro.objects.all()
     residuos = Residuo.objects.all()
     limite = LimitWaste.objects.all()
-    return render(request, 'webpage/agendar.html', {'lugares': lugares, 'residuos': residuos, 'limite': limite})
+    if request.method == 'POST':
+        cita = Cita()
+        cita.lugar = Centro.objects.get(lugar=request.POST['lugar'])
+        cita.fecha_cita = request.POST['fecha']
+        cita.residuo = Residuo.objects.get(request.POST['residuo'])
+        cita.num_residuos = request.POST['cantidad']
+        cita.user = UserProfile.objects.get(pk=request.session['id'])
+        cita.save()
+        return render(request, 'webpage/agendar.html')
+
+    else:
+        return render(request, 'webpage/agendar.html', {'lugares': lugares, 'residuos': residuos, 'limite': limite})
 
 
 def partners(request):
@@ -46,7 +58,8 @@ def registro(request):
             # usuario no esta en database y quiere una cuenta nueva
             if request.POST['pass'] == request.POST['pass2']:
                 if request.POST['email'] == request.POST['email2']:
-                    user = User.objects.create_user(request.POST['username'], email=request.POST['email'],
+                    user = User.objects.create_user(request.POST['username'],
+                                                    email=request.POST['email'],
                                                     password=request.POST['pass'])
                     user.first_name = request.POST['name']
                     user.last_name = request.POST['lastname']
@@ -68,6 +81,9 @@ def login(request):
             usuario = UserProfile.objects.get(username=request.POST['username'])
             auth.login(request, user)
             print(usuario.rol)
+            request.session['username'] = usuario.username
+            request.session['rol'] = usuario.rol
+            request.session['id'] = usuario.pk
             if usuario.rol == '1':
                 return redirect('webpage:index')
             elif usuario.rol == '2':
