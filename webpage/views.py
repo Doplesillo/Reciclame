@@ -165,10 +165,18 @@ def catalogo(request):
     premio = Premio.objects.order_by('-pub_date')
     if request.method == 'POST':
         premio_canje = Premio.objects.get(pk=request.POST['premio_id'])
+        hcanje = HistorialCanje()
+        hcanje.user = UserProfile.objects.get(id=request.session['id'])
+        hcanje.articulo = premio_canje.title
+        hcanje.fecha = datetime.datetime.now()
+        hcanje.antes = usuario.puntos_totales
+        hcanje.despues = usuario.puntos_totales - premio_canje.reward_points
+        hcanje.save()
         if usuario.puntos_totales < premio_canje.reward_points:
             msg = 'No tienes suficientes puntos para canjearlo'
             return render(request, 'webpage/catalogo.html', {'premios': premio, 'msg': msg})
         usuario.puntos_totales = usuario.puntos_totales - premio_canje.reward_points
+
         usuario.save()
         return redirect('webpage:perfil')
     return render(request, 'webpage/catalogo.html', {'premios': premio})
@@ -242,3 +250,17 @@ def centro(request):
             return render(request, 'webpage/index.html')
     else:
         return render(request, 'webpage/index.html')
+
+
+def historialCanje(request):
+    canje = HistorialCanje.objects.filter(user=request.session['id']).all()
+    user = UserProfile.objects.get(pk=request.session['id'])
+    if user is not None:
+        if user.rol == '1':
+            return render(request, 'webpage/historial_canje.html', {'user': user, 'canje': canje})
+        elif user.rol == '2':
+            return redirect('webpage:centro')
+        elif user.rol == '3':
+            return redirect('admin/')
+    else:
+        return redirect('webpage:index')

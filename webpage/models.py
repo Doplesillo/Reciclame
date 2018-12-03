@@ -86,4 +86,12 @@ class Cita(models.Model):
         return str(self.fecha_cita)
 
 
+class HistorialCanje(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    fecha = models.DateField()
+    articulo = models.CharField(max_length=40)
+    antes = models.IntegerField(default=0)
+    despues = models.IntegerField(default=0)
+
+
 

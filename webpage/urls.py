@@ -16,4 +16,5 @@ urlpatterns = [
     path('citas', views.citas, name='citas'),
     path('centro', views.centro, name='centro'),
     path('cancelarcita/<int:id>', views.cancelarcita, name='cancelarcita'),
+    path('historial_canje', views.historialCanje, name='historial_canje'),
 ]

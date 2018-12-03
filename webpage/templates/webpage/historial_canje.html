@@ -1,0 +1,38 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block contenedor %}
+    <article>
+        <section class="section-name p-2 pl-4">
+            <h4>Mis Canjes</h4>
+        </section>
+        <section class="d-flex flex-column partners-background">
+            <div class="d-flex flex-row container mt-3 mb-3 align-items-center w-100">
+                <i class="far fa-user fa-3x"></i>
+                <h2 class="ml-2 mt-1">{{ user.first_name }} {{ user.last_name }} "{{ user }}"</h2>
+
+            </div>
+            <div class="container">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Articulo</th>
+                        <th scope="col">Antes</th>
+                        <th scope="col">Despues</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for canjes in canje %}
+                        <tr>
+                            <th scope="row">{{ canjes.fecha }}</th>
+                            <td>{{ canjes.articulo }}</td>
+                            <td>{{ canjes.antes }}</td>
+                            <td>{{ canjes.despues }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </article>
+{% endblock %}
