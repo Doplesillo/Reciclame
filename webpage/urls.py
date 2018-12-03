@@ -15,4 +15,5 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('citas', views.citas, name='citas'),
     path('centro', views.centro, name='centro'),
+    path('cancelarcita/<int:id>', views.cancelarcita, name='cancelarcita'),
 ]

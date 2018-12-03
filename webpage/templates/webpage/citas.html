@@ -20,8 +20,7 @@
                         <th scope="col">Residuo</th>
                         <th scope="col">Numero</th>
                         <th scope="col">fecha</th>
-                        <th scope="col">aprobación</th>
-                        <th scope="col">ID</th>
+                        <th scope="col">Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,11 +34,19 @@
                             {% if citas.fecha_aprobacion is not none %}
                                 <td>{{ citas.fecha_aprobacion }}</td>
                             {% else %}
+                                {% if citas.Estatus == 0 %}
                                 <td>
-                                        <button>Aprobar</button>
+                                En Espera<br>
+                                <a href="../cancelarcita/{{ citas.id }}"><button class="btn btn-danger">Cancelar</button></a>
                                 </td>
+                                {% elif citas.Estatus == 1 %}
+                                    <td> Cancelado</td>
+                                {% elif citas.Estatus == 2 %}
+                                        <td>Cancelado por <br>el administrador</td>
+                                {% else %}
+                                    <td>Erorr en validacion</td>
+                                {% endif %}
                             {% endif %}
-                            <td>{{ citas.id }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

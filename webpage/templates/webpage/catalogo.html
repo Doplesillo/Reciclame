@@ -50,8 +50,9 @@
                                         <form class="d-flex justify-content-center align-items-center"
                                               action="{% url 'webpage:catalogo' %}" method="post">
                                             {% csrf_token %}
-                                            <input class="premio-placeholder btn btn-success w-75" name="canje"
-                                                   placeholder="Canjear Producto">
+                                            <input type="hidden" name="premio_id" value="{{ premio.id }}">
+                                            <button type="submit" class="premio-placeholder btn btn-success w-75">
+                                                Canjear Producto </button>
                                         </form>
                                     {% endif %}
                                 </div>

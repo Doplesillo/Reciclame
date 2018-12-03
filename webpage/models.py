@@ -80,9 +80,10 @@ class Cita(models.Model):
     fecha_cita = models.DateField(auto_now=False)
     num_residuos = models.IntegerField(default=1)
     fecha_aprobacion = models.DateField(default=None, blank=True, null=True)
+    Estatus = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.fecha_cita
+        return str(self.fecha_cita)
 
 
 

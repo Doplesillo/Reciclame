@@ -161,27 +161,31 @@ def logout(request):
 
 
 def catalogo(request):
-    try:
-        user = UserProfile.objects.get(pk=request.session['id'])
-    except:
-        premio = Premio.objects.order_by('-pub_date')
-        return render(request, 'webpage/catalogo.html', {'premios': premio})
+    usuario = UserProfile.objects.get(id=request.session['id'])
     premio = Premio.objects.order_by('-pub_date')
+    if request.method == 'POST':
+        premio_canje = Premio.objects.get(pk=request.POST['premio_id'])
+        if usuario.puntos_totales < premio_canje.reward_points:
+            msg = 'No tienes suficientes puntos para canjearlo'
+            return render(request, 'webpage/catalogo.html', {'premios': premio, 'msg': msg})
+        usuario.puntos_totales = usuario.puntos_totales - premio_canje.reward_points
+        usuario.save()
+        return redirect('webpage:perfil')
     return render(request, 'webpage/catalogo.html', {'premios': premio})
 
 
 @login_required(login_url="/login")
 def perfil(request):
     user = UserProfile.objects.get(pk=request.session['id'])
-    articulos = Punto.objects.filter(user=request.session['id']).all()
+    articulos = Cita.objects.filter(user__cita=request.session['id'], user__cita__Estatus=1).all()
     if user is not None:
         if user.rol == '1':
             for numero in articulos:
-                numeros = numero.cantidad * numero.waste.points
-            # print(articulos)
+                numeros = numero.num_residuos * numero.residuo.points
+             #print(articulos)
             puntos = 0
             for articulo in articulos:
-                puntos = articulo.cantidad * articulo.waste.points + puntos
+                puntos = articulo.num_residuos * articulo.residuo.points + puntos
                 # print(articulo)
                 # print(puntos)
             # print("===============")
@@ -193,6 +197,15 @@ def perfil(request):
             return redirect('admin/')
     else:
         return redirect('webpage:index')
+
+
+def canje(request):
+    if request.method == 'POST':
+        premio = Premio.objects.get(pk=request.POST['id'])
+        usuario = UserProfile.objects.get(username=request.session['id'])
+        usuario.puntos_totales = usuario.puntos_totales - premio.reward_points
+        usuario.save()
+    return redirect('webpage:perfil')
 
 
 @login_required(login_url="/login")
@@ -209,6 +222,12 @@ def citas(request):
     else:
         return redirect('webpage:index')
 
+
+def cancelarcita(request, id):
+    cita = Cita.objects.get(pk=id)
+    cita.Estatus = 1
+    cita.save()
+    return redirect('webpage:citas')
 
 @login_required(login_url="/login")
 def centro(request):
