@@ -8,11 +8,13 @@
         <section class="d-flex flex-column p-4 container">
             <div class="d-flex flex-column flex-md-row row">
                 <div class="p-4 col-md-6">
-                    <h2>Reciclame</h2>
-                    <p>Esta es una plataforma que te permite ubicar Centros de Acopio en tu localidad para que puedas entregar todos aquellos residuos
-                        y aparatos electrónicos que ya no utilices para su correcto reciclaje.</p>
-                    <p>Además de ayudar a conservar el medio ambiente, recibiras puntos para canjearlos por los premios que ofrecen
-                        nuestros partners</p>
+                    <h2>¿Qué hace reciclame?</h2>
+                    <p>Esta es una plataforma gratuita que te permite ubicar centros de acopio en tu localidad para que puedas entregar 
+                    todos aquellos residuos y aparatos electrónicos que ya no utilices o se encuentren inservibles, para su reciclaje 
+                    correcto y evitar causar daños al medio ambiente.</p>
+                    <p>Se recompensa al usuario con puntos por la entrega de sus residuos, mismos que se pueden canjear en nuestro catálogo 
+                    de productos, se incentiva a realizar el proceso de reciclaje, se relaciona a ciudadanos con centros de reciclaje y se
+                     aumenta el volumen de residuos entregados en centros capacitados, para evitar la afectación al medio ambiente.</p>
                 </div>
                 <div class="d-flex justify-content-center align-center col-md-6 embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/0YjLf8T0lUs"
@@ -123,6 +125,18 @@
                 "<br>Lunes a Viernes" +
                 "<br><ul><li>Electrodomesticos</li><li>Pilas</li><li>Computo</li><li>Televisión</li><li>Celulares</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
             CAnahuac.on('click', onMapClick);
+            var Econatura = L.marker([20.6615148,-103.4081714]).addTo(mymap);
+            Econatura.bindPopup("<b>Econatura</b>" +
+                "<br>9:00am - 7:00pm" +
+                "<br>Lunes a Viernes" +
+                "<br><ul><li>Electrodomesticos</li><li>Pilas</li><li>Computo</li><li>Televisión</li><li>Celulares</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
+            Econatura.on('click', onMapClick);
+            var Aroco = L.marker([20.6704546,-103.4154259]).addTo(mymap);
+            Aroco.bindPopup("<b>Econatura</b>" +
+                "<br>9:00am - 6:00pm" +
+                "<br>Lunes a Viernes" +
+                "<br><ul><li>Electrodomesticos</li><li>Pilas</li><li>Computo</li><li>Televisión</li><li>Celulares</li><ul>"); //Abrir pop up automaticamente al cargar { .openPopup() }
+            Aroco.on('click', onMapClick);
             //Funcion necesaria para elemento onclick
             function onMapClick(e) {
 
@@ -133,7 +147,7 @@
 
         <section class="about-us-contact d-flex flex-column justify-content-center align-content-center
 ">
-            <h4 class="text-center mt-3">Escríbenos</h4>
+            <h4 class="text-center mt-3">¿Tienes dudas? Escríbenos:</h4>
             <form class="m-3">
                 <div class="d-flex flex-column flex-md-row">
                     <div class="form-group col-md-6">
