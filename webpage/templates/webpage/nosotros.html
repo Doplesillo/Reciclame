@@ -5,6 +5,13 @@
         <section class="section-name p-2 pl-4">
             <h4>Nosotros</h4>
         </section>
+        {% if success %}
+            <section>
+                <div class="alert alert-success" role="alert">
+                   {{ success }}
+                </div>
+            </section>
+        {% endif %}
         <section class="d-flex flex-column p-4 container">
             <div class="d-flex flex-column flex-md-row row">
                 <div class="p-4 col-md-6">
@@ -148,18 +155,19 @@
         <section class="about-us-contact d-flex flex-column justify-content-center align-content-center
 ">
             <h4 class="text-center mt-3">¿Tienes dudas? Escríbenos:</h4>
-            <form class="m-3">
+            <form class="m-3" method="post" action="">
+            {% csrf_token %}
                 <div class="d-flex flex-column flex-md-row">
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="contact-name" placeholder="Nombre">
+                        <input type="text" class="form-control" id="contact-name" placeholder="Nombre" name="nombre">
                     </div>
                     <div class="form-group col-md-6">
                         <input type="email" class="form-control" id="exampleFormControlInput1"
-                               placeholder="name@example.com">
+                               placeholder="correo@example.com" name="correo">
                     </div>
                 </div>
                 <div class="form-group col-12">
-                    <textarea class="form-control" id="contact-textarea" rows="10" placeholder="Texto"></textarea>
+                    <textarea class="form-control" id="contact-textarea" rows="10" placeholder="Descripción" name="descripcion"></textarea>
                 </div>
                 <div class="d-flex justify-content-center">
                     <a class="about-us-sendbtn" href="#">

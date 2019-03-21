@@ -15,7 +15,20 @@ def index(request):
 
 
 def nosotros(request):
-    return render(request, 'webpage/nosotros.html')
+    if request.method == 'POST':
+                nombre = request.POST['nombre']
+                correo = request.POST['correo']
+                descripcion = request.POST['descripcion']
+                send_mail('Reciclamex',  # subject
+                          'La persona ' + nombre + ' con el correo ' + correo + ' mando el siguiente mensaje por medio de la seccion de DUDAS: ' + descripcion,  # body
+                          'slayerudg@gmail.com',  # domain email
+                          ['slayerudg@gmail.com'],  # email that recieve
+                          fail_silently=True  # show if fails
+                          )
+                return render(request, 'webpage/nosotros.html',
+                              {'success': 'Tu Mensaje se ha enviado correctamente'})
+    else:
+        return render(request, 'webpage/nosotros.html')
 
 
 @login_required(login_url="/login")
@@ -34,10 +47,10 @@ def agendar(request):
                 cita.num_residuos = request.POST['cantidad']
                 cita.user = UserProfile.objects.get(pk=request.session['id'])
                 cita.save()
-                send_mail('Hello from Reciclame',  # subject
-                          'Tienes una cita el dia'+ ' ' + str(cita.fecha_cita) + ' ' + 'en' + ' ' + str(cita.lugar) + ' ' + 'te esperamos',  # body
-                          'jmanuel.chairez@cucea.udg.mx',  # domain email
-                          ['manuelchairezudg@gmail.com'],  # email that recieve
+                send_mail('Reciclamex',  # subject
+                          'Se agendo una cita el dia'+ ' ' + str(cita.fecha_cita) + ' ' + 'en' + ' ' + str(cita.lugar) + ' ' + 'te esperamos',  # body
+                          'slayerudg@gmail.com',  # domain email
+                          ['slayerudg@gmail.com','manuelchairezudg@gmail.com','reciclamex.info@gmail.com', 'jmanuel.chairez@alumnos.udg.mx'],  # email that recieve
                           fail_silently=True  # show if fails
                           )
                 return render(request, 'webpage/agendar.html',

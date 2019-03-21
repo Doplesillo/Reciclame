@@ -76,7 +76,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'reciclamedb',
         'USER': 'root',
-        'PASSWORD': 'SReciclame18',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -122,14 +122,12 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-SEND_GRID_API_KEY = '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'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'jmanuel.cucea'
-EMAIL_HOST_PASSWORD = 'dople951753'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'slayerudg@gmail.com'
+EMAIL_HOST_PASSWORD = 'slayerudg123'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'jmanuel.chairez@cucea.udg.mx'
-ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Email Recibido de Manuel'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 try:
