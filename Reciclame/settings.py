@@ -76,8 +76,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'reciclamedb',
         'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'SReciclame18',
+        'PASSWORD': 'SReciclame18',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
