@@ -173,7 +173,7 @@ def logout(request):
         auth.logout(request)
         return redirect('webpage:index')
 
-
+@login_required(login_url="/login")
 def catalogo(request):
     usuario = UserProfile.objects.get(id=request.session['id'])
     premio = Premio.objects.order_by('-pub_date')
