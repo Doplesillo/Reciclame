@@ -65,7 +65,7 @@ class LimitWaste(models.Model):
 class Premio(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='static/webpage/images/catalogo/')
     reward_points = models.IntegerField(default=0)
     pub_date = models.DateTimeField(auto_now_add=True)
     stock = models.IntegerField(default=0)
@@ -103,7 +103,7 @@ class Partners(models.Model):
     email = models.CharField(max_length=50, default=" ")
     pagina = models.CharField(max_length=80, default=" ")
     giro = models.CharField(max_length=40, default=" ")
-    image = models.ImageField(upload_to='images/partners/', default="example.jpg")
+    image = models.ImageField(upload_to='static/webpage/images/partners/', default="example.jpg")
 
     def __str__(self):
         return self.nombre
