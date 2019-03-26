@@ -25,7 +25,7 @@
                 <div class="d-flex flex-row justify-content-center">
                     {% for partners in partner %}
                     <div class="d-flex flex-column text-center m-3">
-                        <img class="img-fluid partner-img" src="{% static "webpage/images/partners/" %}{{ partners.image }}" >
+                        <img class="img-fluid partner-img" src="{{ partners.image }}" >
                         <h4 class="m-2">{{ partners.nombre }}</h4>
                         <p>{{ partners.descripcion }}</p>
                         <p>{{ partners.direccion }}</p>
