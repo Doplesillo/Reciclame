@@ -25,10 +25,24 @@ class CentroAdmin(admin.ModelAdmin):
     list_display = ('place_name', 'place_email')
     search_fields = ('place_name',)
 
-
 admin.site.register(LimitWaste)
-admin.site.register(Premio)
+
+
+@admin.register(Premio)
+class PremioAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'description','image')
+    search_fields = ('title',)
+
+
 admin.site.register(ResiduoLugar)
 admin.site.register(Cita)
 admin.site.register(HistorialCanje)
+
+
+@admin.register(Partners)
+class PartnersAdmin(admin.ModelAdmin):
+    list_display = ('id', 'nombre', 'direccion','telefono','email')
+    search_fields = ('nombre','direccion','telefono')
+
+
 admin.site.site_header = 'Reciclamex Admin'

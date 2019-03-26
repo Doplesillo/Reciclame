@@ -103,6 +103,7 @@ class Partners(models.Model):
     email = models.CharField(max_length=50, default=" ")
     pagina = models.CharField(max_length=80, default=" ")
     giro = models.CharField(max_length=40, default=" ")
+    image = models.ImageField(upload_to='images/partners', default="example.jpg")
 
     def __str__(self):
         return self.nombre
