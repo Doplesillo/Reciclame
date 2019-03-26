@@ -68,7 +68,8 @@ def agendar(request):
 
 
 def partners(request):
-    return render(request, 'webpage/partners.html')
+    partner = Partners.objects.all()
+    return render(request, 'webpage/partners.html', {"partner": partner})
 
 
 def registro(request):

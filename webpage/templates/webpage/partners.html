@@ -23,28 +23,18 @@
         <section class="d-flex flex-column flex-md-row partners-background">
             <div class="mb-4 d-flex flex-column flex-md-row">
                 <div class="d-flex flex-row justify-content-center">
+                    {% for partners in partner %}
                     <div class="d-flex flex-column text-center m-3">
-                        <img class="img-fluid partner-img" src="{% static "webpage/images/dpartner1.png" %}" >
-                        <h4 class="m-2">Partner 1</h4>
-                        <p>Por medio de esta compañia podras obtener varios beneficios al reciclar residuos electronicos.</p>
+                        <img class="img-fluid partner-img" src="{% static "webpage/images/partners/" %}{{ partners.image }}" >
+                        <h4 class="m-2">{{ partners.nombre }}</h4>
+                        <p>{{ partners.descripcion }}</p>
+                        <p>{{ partners.direccion }}</p>
+                        <p>{{ partners.telefono }}</p>
+                        <p>{{ partners.horario }}</p>
+                        <p>{{ partners.email }}</p>
+                        <p>{{ partners.pagina }}</p>
                     </div>
-                    <div class="d-flex flex-column text-center m-3">
-                        <img class="img-fluid partner-img" src="{% static "webpage/images/dpartner2.png" %}" >
-                        <h4 class="m-2">Partner 2</h4>
-                        <p>Por medio de esta compañia podras obtener varios beneficios al reciclar residuos electronicos.</p>
-                    </div>
-                </div>
-                <div class="d-flex flex-row justify-content-center">
-                    <div class="d-flex flex-column text-center m-3">
-                        <img class="img-fluid partner-img" src="{% static "webpage/images/dpartner3.png" %}">
-                        <h4 class="m-2">Partner 3</h4>
-                        <p>Por medio de esta compañia podras obtener varios beneficios al reciclar residuos electronicos.</p>
-                    </div>
-                    <div class="d-flex flex-column text-center m-3">
-                        <img class="img-fluid partner-img" src="{% static "webpage/images/dpartner4 copy.png" %}">
-                        <h4 class="m-2">Partner 4</h4>
-                        <p>Por medio de esta compañia podras obtener varios beneficios al reciclar residuos electronicos.</p>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
