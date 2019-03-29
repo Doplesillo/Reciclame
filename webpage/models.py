@@ -98,7 +98,7 @@ class Partners(models.Model):
     nombre = models.CharField(max_length=50, default="Pendiente")
     descripcion = models.CharField(max_length=50, default=" ")
     direccion = models.CharField(max_length=100, default=" ")
-    telefono = models.IntegerField(default=0)
+    telefono = models.CharField(max_length=50, default=0)
     horario = models.CharField(max_length=25, default=" ")
     email = models.CharField(max_length=50, default=" ")
     pagina = models.CharField(max_length=80, default=" ")
