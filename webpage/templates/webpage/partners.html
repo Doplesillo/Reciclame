@@ -20,9 +20,9 @@
                 </div>
             </div>
         </section>
-        <section class="d-flex flex-column flex-md-row partners-background flex-wrap">
+        <section class="partners-background flex-wrap">
             <div class="mb-4 d-flex flex-column flex-md-row">
-                <div class="d-flex flex-row justify-content-center">
+                <div class="d-flex flex-row justify-content-center w-100 flex-wrap">
                     {% for partners in partner %}
                     <div class="d-flex flex-column col-md-3 text-center m-3">
                         <img src="{% static "webpage/images/partners/"%}{{ partners.image }}"
