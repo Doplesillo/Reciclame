@@ -20,19 +20,20 @@
                 </div>
             </div>
         </section>
-        <section class="d-flex flex-column flex-md-row partners-background">
+        <section class="d-flex flex-column flex-md-row partners-background flex-wrap">
             <div class="mb-4 d-flex flex-column flex-md-row">
                 <div class="d-flex flex-row justify-content-center">
                     {% for partners in partner %}
-                    <div class="d-flex flex-column text-center m-3">
-                        <img class="img-fluid partner-img" src="/{{ partners.image }}" >
+                    <div class="d-flex flex-column col-md-3 text-center m-3">
+                        <img src="{% static "webpage/images/partners/"%}{{ partners.image }}"
+                                     alt="Card image cap" height="230px">
                         <h4 class="m-2">{{ partners.nombre }}</h4>
                         <p>{{ partners.descripcion }}</p>
-                        <p>{{ partners.direccion }}</p>
-                        <p>{{ partners.telefono }}</p>
-                        <p>{{ partners.horario }}</p>
-                        <p>{{ partners.email }}</p>
-                        <p>{{ partners.pagina }}</p>
+                        <p>Dirección: {{ partners.direccion }}</p>
+                        <p>Telefono: {{ partners.telefono }}</p>
+                        <p>Horario: {{ partners.horario }}</p>
+                        <p>Correo: {{ partners.email }}</p>
+                        <p>Pagina web: {{ partners.pagina }}</p>
                     </div>
                     {% endfor %}
                 </div>
