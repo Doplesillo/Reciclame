@@ -27,7 +27,7 @@
                 {% csrf_token %}
                 <div class="form-group col-12">
                     <label for="exampleFormControlSelect1">Centro de Acopio</label>
-                    <select class="form-control" id="acopio" name="lugar">
+                    <select class="form-control" id="acopio" name="lugar" required>
                         {% for lugar in lugares %}
                             <option value="{{ lugar.id }}">{{ lugar.place_name }}</option>
                         {% endfor %}
@@ -35,11 +35,11 @@
                 </div>
                 <div class="form-group col-12">
                     <label for="exampleFormControlSelect2">Fecha</label>
-                    <input type="date" class="form-control mb-3" name="fecha">
+                    <input type="date" class="form-control mb-3" name="fecha" required>
                 </div>
                 <div class="form-group col-lg-4">
                     <label for="exampleFormControlSelect1">Residuos Electrónicos</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="residuo">
+                    <select class="form-control" id="exampleFormControlSelect1" name="residuo" required>
                         {% for residuo in residuos %}
                             <option value="{{ residuo.id }}">{{ residuo.waste_name }}</option>
                         {% endfor %}
@@ -47,7 +47,7 @@
                 </div>
                 <div class="form-group col-lg-4">
                     <label for="num-residuos"> Numero de aparatos a llevar</label>
-                    <input id="num-residuos" type="number" class="form-control" min="0" name="cantidad">
+                    <input id="num-residuos" type="number" class="form-control" min="0" name="cantidad" required>
                 </div>
             <!-- Ajax para sacar limites
                 <div class="form-group col-lg-4">
