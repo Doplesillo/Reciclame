@@ -104,6 +104,7 @@ class Partners(models.Model):
     pagina = models.CharField(max_length=80, default=" ")
     giro = models.CharField(max_length=40, default=" ")
     image = models.ImageField(upload_to='static/webpage/images/partners/', default="example.jpg")
+    contacto = models.CharField(max_length=50, default="No disponible")
 
     def __str__(self):
         return self.nombre
